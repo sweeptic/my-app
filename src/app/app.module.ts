@@ -7,6 +7,7 @@ import { ServerComponent } from './server/server.component';
 import { FormsModule } from '@angular/forms';
 import { HighlightDirective } from './server/highlight.directive';
 import { HighlightDirectiveHostBinding } from './server/highlightHostbinding.directive';
+import { UnlessDirective } from './server/unless.directive';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { HighlightDirectiveHostBinding } from './server/highlightHostbinding.dir
     ServerComponent,
     HighlightDirective,
     HighlightDirectiveHostBinding,
+    UnlessDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

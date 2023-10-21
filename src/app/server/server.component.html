@@ -30,6 +30,9 @@
 <button (click)="ifHandler()">NG IF</button>
 
 <h3 *ngIf="ifHandlerValue === true; else noServer">NG IF ACTIVATED</h3>
+<ng-template ngIf="ifHandlerValue === true">
+  <h3>NG IF ACTIVATED</h3>
+</ng-template>
 <ng-template #noServer>NG IF IS NOT ACTIVATED</ng-template>
 <hr />
 <p>NG STYLE DIRECTIVE</p>
@@ -47,4 +50,17 @@
 <div appHighlight>IM IM HIGHLIGHT DIRECTIVE</div>
 <div appHighlightHostBinding [defaultColor]="'yellow'">
   IM IM HIGHLIGHT HOST BINDING DIRECTIVE
+</div>
+
+<div *appUnless="false">
+  <p>UNLESS STRUCTURAL DIRECTIVE</p>
+  <p>UNLESS STRUCTURAL DIRECTIVE</p>
+  <p>UNLESS STRUCTURAL DIRECTIVE</p>
+  <p>UNLESS STRUCTURAL DIRECTIVE</p>
+  <p>UNLESS STRUCTURAL DIRECTIVE</p>
+</div>
+<hr />
+<div [ngSwitch]="true">
+  <div *ngSwitchCase="true">TRUE</div>
+  <div *ngSwitchDefault>DEFAULT</div>
 </div>
