@@ -11,6 +11,10 @@ import { UnlessDirective } from './basic-components/unless.directive';
 import { EventsComponentsComponent } from './events-components/events-components.component';
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { ObservablesComponentComponent } from './observables-component/observables-component.component';
+import { Inner1Component } from './inner1/inner1.component';
+import { Inner2Component } from './inner2/inner2.component';
+import { Outer1Component } from './outer1/outer1.component';
+import { Outer2Component } from './outer2/outer2.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +26,10 @@ import { ObservablesComponentComponent } from './observables-component/observabl
     EventsComponentsComponent,
     HomeComponentComponent,
     ObservablesComponentComponent,
+    Inner1Component,
+    Inner2Component,
+    Outer1Component,
+    Outer2Component,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
