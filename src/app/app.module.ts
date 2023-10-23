@@ -15,6 +15,7 @@ import { Inner1Component } from './inner1/inner1.component';
 import { Inner2Component } from './inner2/inner2.component';
 import { Outer1Component } from './outer1/outer1.component';
 import { Outer2Component } from './outer2/outer2.component';
+import { CounterService } from './services/counter.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { Outer2Component } from './outer2/outer2.component';
     Outer2Component,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [],
+  providers: [CounterService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
