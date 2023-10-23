@@ -3,11 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ServerComponent } from './server/server.component';
+import { ServerComponent } from './basic-components/server.component';
 import { FormsModule } from '@angular/forms';
-import { HighlightDirective } from './server/highlight.directive';
-import { HighlightDirectiveHostBinding } from './server/highlightHostbinding.directive';
-import { UnlessDirective } from './server/unless.directive';
+import { HighlightDirective } from './basic-components/highlight.directive';
+import { HighlightDirectiveHostBinding } from './basic-components/highlightHostbinding.directive';
+import { UnlessDirective } from './basic-components/unless.directive';
+import { EventsComponentsComponent } from './events-components/events-components.component';
+import { HomeComponentComponent } from './home-component/home-component.component';
+import { ObservablesComponentComponent } from './observables-component/observables-component.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +19,9 @@ import { UnlessDirective } from './server/unless.directive';
     HighlightDirective,
     HighlightDirectiveHostBinding,
     UnlessDirective,
+    EventsComponentsComponent,
+    HomeComponentComponent,
+    ObservablesComponentComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
