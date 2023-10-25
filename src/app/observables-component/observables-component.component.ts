@@ -2,8 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter } from '@angular/core';
 import {
   EMPTY,
+  ErrorNotification,
+  NextNotification,
   Observable,
   Subscription,
+  animationFrameScheduler,
   asapScheduler,
   asyncScheduler,
   audit,
@@ -22,6 +25,8 @@ import {
   debounce,
   defer,
   delay,
+  delayWhen,
+  dematerialize,
   distinct,
   distinctUntilChanged,
   distinctUntilKeyChanged,
@@ -43,11 +48,13 @@ import {
   last,
   map,
   mapTo,
+  materialize,
   merge,
   mergeAll,
   mergeMap,
   mergeMapTo,
   mergeScan,
+  observeOn,
   of,
   pairwise,
   partition,
@@ -55,9 +62,11 @@ import {
   race,
   range,
   reduce,
+  retry,
   sample,
   sampleTime,
   scan,
+  share,
   single,
   skip,
   skipLast,
@@ -75,7 +84,12 @@ import {
   throttle,
   throttleTime,
   throwError,
+  timeInterval,
+  timeout,
+  timeoutWith,
   timer,
+  timestamp,
+  toArray,
   windowCount,
   windowTime,
   windowToggle,
@@ -1508,6 +1522,294 @@ export class ObservablesComponentComponent {
     const timer = interval(1000);
     const result = clicks.pipe(withLatestFrom(timer));
     result.subscribe((x) => console.log(x));
+  }
+
+  share1() {
+    const source = interval(1000).pipe(
+      tap((x) => console.log('Processing: ', x)),
+      map((x) => x * x),
+      take(6),
+      share()
+    );
+
+    source.subscribe((x) => console.log('subscription 1: ', x));
+    source.subscribe((x) => console.log('subscription 2: ', x));
+
+    // Logs:
+    // Processing: 0
+    // subscription 1: 0
+    // subscription 2: 0
+    // Processing: 1
+    // subscription 1: 1
+    // subscription 2: 1
+    // Processing: 2
+    // subscription 1: 4
+    // subscription 2: 4
+    // Processing: 3
+    // subscription 1: 9
+    // subscription 2: 9
+    // Processing: 4
+    // subscription 1: 16
+    // subscription 2: 16
+    // Processing: 5
+    // subscription 1: 25
+    // subscription 2: 25
+  }
+  share2() {
+    const source = interval(1000).pipe(
+      take(3),
+      share({
+        resetOnRefCountZero: () => timer(1000),
+      })
+    );
+
+    const subscriptionOne = source.subscribe((x) =>
+      console.log('subscription 1: ', x)
+    );
+    setTimeout(() => subscriptionOne.unsubscribe(), 1300);
+
+    setTimeout(
+      () => source.subscribe((x) => console.log('subscription 2: ', x)),
+      1700
+    );
+
+    setTimeout(
+      () => source.subscribe((x) => console.log('subscription 3: ', x)),
+      5000
+    );
+
+    // Logs:
+    // subscription 1:  0
+    // (subscription 1 unsubscribes here)
+    // (subscription 2 subscribes here ~400ms later, source was not reset)
+    // subscription 2:  1
+    // subscription 2:  2
+    // (subscription 2 unsubscribes here)
+    // (subscription 3 subscribes here ~2000ms later, source did reset before)
+    // subscription 3:  0
+    // subscription 3:  1
+    // subscription 3:  2
+  }
+
+  catchError1() {
+    of(1, 2, 3, 4, 5)
+      .pipe(
+        map((n) => {
+          if (n === 4) {
+            throw 'four!';
+          }
+          return n;
+        }),
+        catchError((err) => of('I', 'II', 'III', 'IV', 'V'))
+      )
+      .subscribe((x) => console.log(x));
+    // 1, 2, 3, I, II, III, IV, V
+  }
+  catchError2() {
+    of(1, 2, 3, 4, 5)
+      .pipe(
+        map((n) => {
+          if (n === 4) {
+            throw 'four!';
+          }
+          return n;
+        }),
+        catchError((err, caught) => caught),
+        take(30)
+      )
+      .subscribe((x) => console.log(x));
+    // 1, 2, 3, 1, 2, 3, ...
+  }
+  catchError3() {
+    of(1, 2, 3, 4, 5)
+      .pipe(
+        map((n) => {
+          if (n === 4) {
+            throw 'four!';
+          }
+          return n;
+        }),
+        catchError((err) => {
+          throw 'error in source. Details: ' + err;
+        })
+      )
+      .subscribe({
+        next: (x) => console.log(x),
+        error: (err) => console.log(err),
+      });
+    // 1, 2, 3, error in source. Details: four!
+  }
+
+  retry() {
+    const source = interval(1000);
+    const result = source.pipe(
+      mergeMap((val) => (val > 5 ? throwError(() => 'Error!') : of(val))),
+      retry(2) // retry 2 times on error
+    );
+
+    result.subscribe({
+      next: (value) => console.log(value),
+      error: (err) => console.log(`${err}: Retried 2 times then quit!`),
+    });
+
+    // Output:
+    // 0..1..2..3..4..5..
+    // 0..1..2..3..4..5..
+    // 0..1..2..3..4..5..
+    // 'Error!: Retried 2 times then quit!'
+  }
+
+  tap() {
+    const source = of(1, 2, 3, 4, 5);
+
+    source
+      .pipe(
+        tap((n) => {
+          if (n > 3) {
+            throw new TypeError(`Value ${n} is greater than 3`);
+          }
+        })
+      )
+      .subscribe({
+        next: console.log,
+        error: (err) => console.log(err.message),
+      });
+  }
+  delay() {
+    const clicks = fromEvent(document, 'click');
+    const delayedClicks = clicks.pipe(delay(1000)); // each click emitted after 1 second
+    delayedClicks.subscribe((x) => console.log(x));
+  }
+  delayWhen() {
+    const clicks = fromEvent(document, 'click');
+    const delayedClicks = clicks.pipe(
+      delayWhen(() => interval(Math.random() * 5000))
+    );
+    delayedClicks.subscribe((x) => console.log(x));
+  }
+  dematerialize() {
+    const notifA: NextNotification<string> = { kind: 'N', value: 'A' };
+    const notifB: NextNotification<string> = { kind: 'N', value: 'B' };
+    const notifE: ErrorNotification = {
+      kind: 'E',
+      error: new TypeError('x.toUpperCase is not a function'),
+    };
+
+    const materialized = of(notifA, notifB, notifE);
+
+    const upperCase = materialized.pipe(dematerialize());
+    upperCase.subscribe({
+      next: (x) => console.log(x),
+      error: (e) => console.error(e),
+    });
+
+    // Results in:
+    // A
+    // B
+    // TypeError: x.toUpperCase is not a function
+  }
+  materialize() {
+    const letters = of('a', 'b', 13, 'd');
+    const upperCase = letters.pipe(map((x: any) => x.toUpperCase()));
+    const materialized = upperCase.pipe(materialize());
+
+    materialized.subscribe((x) => console.log(x));
+
+    // Results in the following:
+    // - Notification { kind: 'N', value: 'A', error: undefined, hasValue: true }
+    // - Notification { kind: 'N', value: 'B', error: undefined, hasValue: true }
+    // - Notification { kind: 'E', value: undefined, error: TypeError { message: x.toUpperCase is not a function }, hasValue: false }
+  }
+  observeOn() {
+    const someDiv = document.createElement('div');
+    someDiv.style.cssText = 'width: 200px;background: #09c';
+    document.body.appendChild(someDiv);
+    const intervals = interval(10); // Intervals are scheduled
+    // with async scheduler by default...
+    intervals
+      .pipe(
+        observeOn(animationFrameScheduler) // ...but we will observe on animationFrame
+      ) // scheduler to ensure smooth animation.
+      .subscribe((val) => {
+        someDiv.style.height = val + 'px';
+      });
+  }
+  subscribeOn() {
+    const a = of(1, 2, 3);
+    const b = of(4, 5, 6);
+
+    merge(a, b).subscribe(console.log);
+
+    // Outputs
+    // 1
+    // 2
+    // 3
+    // 4
+    // 5
+    // 6
+  }
+  timeInterval() {
+    const seconds = interval(1000);
+
+    seconds.pipe(timeInterval()).subscribe((value) => console.log(value));
+
+    // NOTE: The values will never be this precise,
+    // intervals created with `interval` or `setInterval`
+    // are non-deterministic.
+
+    // { value: 0, interval: 1000 }
+    // { value: 1, interval: 1000 }
+    // { value: 2, interval: 1000 }
+  }
+  timestamp() {
+    const clickWithTimestamp = fromEvent(document, 'click').pipe(timestamp());
+
+    // Emits data of type { value: PointerEvent, timestamp: number }
+    clickWithTimestamp.subscribe((data) => {
+      console.log(data);
+    });
+  }
+  timeout() {
+    const slow$ = interval(900);
+    const fast$ = interval(500);
+
+    slow$
+      .pipe(
+        timeout({
+          each: 1000,
+          with: () => fast$,
+        })
+      )
+      .subscribe(console.log);
+  }
+  timeoutWith() {
+    class CustomTimeoutError extends Error {
+      constructor() {
+        super('It was too slow');
+        this.name = 'CustomTimeoutError';
+      }
+    }
+
+    const slow$ = interval(1000);
+
+    slow$
+      .pipe(
+        timeoutWith(
+          900,
+          throwError(() => new CustomTimeoutError())
+        )
+      )
+      .subscribe({
+        error: (err) => console.error(err.message),
+      });
+  }
+  toArray() {
+    const source = interval(1000);
+    const example = source.pipe(take(10), toArray());
+
+    example.subscribe((value) => console.log(value));
+
+    // output: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
   }
 
   // window1() {
