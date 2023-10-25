@@ -6,20 +6,30 @@ import {
   Subscription,
   asapScheduler,
   asyncScheduler,
+  audit,
+  auditTime,
   buffer,
   bufferCount,
   bufferToggle,
   bufferWhen,
   catchError,
   combineLatest,
+  combineLatestAll,
   concat,
   concatAll,
   concatMap,
   concatMapTo,
+  debounce,
   defer,
   delay,
+  distinct,
+  distinctUntilChanged,
+  distinctUntilKeyChanged,
+  elementAt,
+  exhaustAll,
   exhaustMap,
   expand,
+  filter,
   first,
   forkJoin,
   from,
@@ -27,6 +37,7 @@ import {
   fromEventPattern,
   generate,
   groupBy,
+  ignoreElements,
   iif,
   interval,
   last,
@@ -44,19 +55,32 @@ import {
   race,
   range,
   reduce,
+  sample,
+  sampleTime,
   scan,
+  single,
   skip,
+  skipLast,
+  skipUntil,
+  skipWhile,
   startWith,
+  switchAll,
   switchMap,
   switchMapTo,
   take,
+  takeLast,
   takeUntil,
+  takeWhile,
+  tap,
+  throttle,
+  throttleTime,
   throwError,
   timer,
   windowCount,
   windowTime,
   windowToggle,
   windowWhen,
+  withLatestFrom,
   zip,
 } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
@@ -1061,6 +1085,428 @@ export class ObservablesComponentComponent {
       map((win) => win.pipe(take(2))), // take at most 2 emissions from each window
       mergeAll() // flatten the Observable-of-Observables
     );
+    result.subscribe((x) => console.log(x));
+  }
+
+  audit() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(audit((ev) => interval(1000)));
+    result.subscribe((x) => console.log(x));
+  }
+
+  auditTime() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(auditTime(1000));
+    result.subscribe((x) => console.log(x));
+  }
+
+  debounce() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(
+      scan((i) => ++i, 1),
+      debounce((i) => interval(200 * i))
+    );
+    result.subscribe((x) => console.log(x));
+  }
+
+  distinct1() {
+    of(1, 1, 2, 2, 2, 1, 2, 3, 4, 3, 2, 1)
+      .pipe(distinct())
+      .subscribe((x) => console.log(x));
+
+    // Outputs
+    // 1
+    // 2
+    // 3
+    // 4
+  }
+  distinct2() {
+    of(
+      { age: 4, name: 'Foo' },
+      { age: 7, name: 'Bar' },
+      { age: 5, name: 'Foo' }
+    )
+      .pipe(distinct(({ name }) => name))
+      .subscribe((x) => console.log(x));
+
+    // Outputs
+    // { age: 4, name: 'Foo' }
+    // { age: 7, name: 'Bar' }
+  }
+
+  distinctUntilChanged1() {
+    of(1, 1, 1, 2, 2, 2, 1, 1, 3, 3)
+      .pipe(distinctUntilChanged())
+      .subscribe(console.log);
+    // Logs: 1, 2, 1, 3
+  }
+  distinctUntilChanged2() {
+    const totallyDifferentBuilds$ = of(
+      { engineVersion: '1.1.0', transmissionVersion: '1.2.0' },
+      { engineVersion: '1.1.0', transmissionVersion: '1.4.0' },
+      { engineVersion: '1.3.0', transmissionVersion: '1.4.0' },
+      { engineVersion: '1.3.0', transmissionVersion: '1.5.0' },
+      { engineVersion: '2.0.0', transmissionVersion: '1.5.0' }
+    ).pipe(
+      distinctUntilChanged((prev, curr) => {
+        return (
+          prev.engineVersion === curr.engineVersion ||
+          prev.transmissionVersion === curr.transmissionVersion
+        );
+      })
+    );
+
+    totallyDifferentBuilds$.subscribe(console.log);
+
+    // Logs:
+    // { engineVersion: '1.1.0', transmissionVersion: '1.2.0' }
+    // { engineVersion: '1.3.0', transmissionVersion: '1.4.0' }
+    // { engineVersion: '2.0.0', transmissionVersion: '1.5.0' }
+  }
+  distinctUntilChanged3() {
+    const temps$ = of(30, 31, 20, 34, 33, 29, 35, 20);
+
+    const recordHighs$ = temps$.pipe(
+      distinctUntilChanged((prevHigh, temp) => {
+        // If the current temp is less than
+        // or the same as the previous record,
+        // the record hasn't changed.
+        return temp <= prevHigh;
+      })
+    );
+
+    recordHighs$.subscribe(console.log);
+    // Logs: 30, 31, 34, 35
+  }
+  distinctUntilChanged4() {
+    // A stream of updates to a given account
+    const accountUpdates$ = of(
+      { updatedBy: 'blesh', data: [] },
+      { updatedBy: 'blesh', data: [] },
+      { updatedBy: 'ncjamieson', data: [] },
+      { updatedBy: 'ncjamieson', data: [] },
+      { updatedBy: 'blesh', data: [] }
+    );
+
+    // We only want the events where it changed hands
+    const changedHands$ = accountUpdates$.pipe(
+      distinctUntilChanged(undefined as any, (update) => update.updatedBy)
+    );
+
+    changedHands$.subscribe(console.log);
+    // Logs:
+    // { updatedBy: 'blesh', data: Array[0] }
+    // { updatedBy: 'ncjamieson', data: Array[0] }
+    // { updatedBy: 'blesh', data: Array[0] }
+  }
+
+  distinctUntilKeyChanged1() {
+    of(
+      { age: 4, name: 'Foo' },
+      { age: 7, name: 'Bar' },
+      { age: 5, name: 'Foo' },
+      { age: 6, name: 'Foo' }
+    )
+      .pipe(distinctUntilKeyChanged('name'))
+      .subscribe((x) => console.log(x));
+
+    // displays:
+    // { age: 4, name: 'Foo' }
+    // { age: 7, name: 'Bar' }
+    // { age: 5, name: 'Foo' }
+  }
+  distinctUntilKeyChanged2() {
+    of(
+      { age: 4, name: 'Foo1' },
+      { age: 7, name: 'Bar' },
+      { age: 5, name: 'Foo2' },
+      { age: 6, name: 'Foo3' }
+    )
+      .pipe(
+        distinctUntilKeyChanged(
+          'name',
+          (x, y) => x.substring(0, 3) === y.substring(0, 3)
+        )
+      )
+      .subscribe((x) => console.log(x));
+
+    // displays:
+    // { age: 4, name: 'Foo1' }
+    // { age: 7, name: 'Bar' }
+    // { age: 5, name: 'Foo2' }
+  }
+
+  elementAt1() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(elementAt(2));
+    result.subscribe((x) => console.log(x));
+
+    // Results in:
+    // click 1 = nothing
+    // click 2 = nothing
+    // click 3 = MouseEvent object logged to console
+  }
+
+  filter() {
+    const div = document.createElement('div');
+    div.style.cssText = 'width: 200px; height: 200px; background: #09c;';
+    document.body.appendChild(div);
+
+    const clicks = fromEvent(document, 'click');
+    const clicksOnDivs = clicks.pipe(
+      filter((ev) => (<HTMLElement>ev.target).tagName === 'DIV')
+    );
+    clicksOnDivs.subscribe((x) => console.log(x));
+  }
+
+  first() {
+    const div = document.createElement('div');
+    div.style.cssText = 'width: 200px; height: 200px; background: #09c;';
+    document.body.appendChild(div);
+
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(
+      first((ev) => (<HTMLElement>ev.target).tagName === 'DIV')
+    );
+    result.subscribe((x) => console.log(x));
+  }
+
+  ignoreElements() {
+    of('you', 'talking', 'to', 'me')
+      .pipe(ignoreElements())
+      .subscribe({
+        next: (word) => console.log(word),
+        error: (err) => console.log('error:', err),
+        complete: () => console.log('the end'),
+      });
+  }
+
+  last1() {
+    const source = from(['x', 'y', 'z']);
+    const result = source.pipe(last());
+
+    result.subscribe((value) => console.log(`Last alphabet: ${value}`));
+  }
+
+  last2() {
+    const source = from(['x', 'y', 'z']);
+    const result = source.pipe(last((char) => char === 'a', 'not found'));
+
+    result.subscribe((value) => console.log(`'a' is ${value}.`));
+  }
+
+  sample() {
+    const seconds = interval(1000);
+    const clicks = fromEvent(document, 'click');
+    const result = seconds.pipe(sample(clicks));
+
+    result.subscribe((x) => console.log(x));
+  }
+
+  sampleTime() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(sampleTime(1000));
+
+    result.subscribe((x) => console.log(x));
+  }
+
+  single() {
+    const source1 = of(
+      { name: 'Ben' },
+      { name: 'Tracy' },
+      { name: 'Laney' },
+      { name: 'Lily' }
+    );
+
+    source1
+      .pipe(single((x) => x.name.startsWith('B')))
+      .subscribe((x) => console.log(x));
+    // Emits 'Ben'
+
+    const source2 = of(
+      { name: 'Ben' },
+      { name: 'Tracy' },
+      { name: 'Bradley' },
+      { name: 'Lincoln' }
+    );
+
+    source2
+      .pipe(single((x) => x.name.startsWith('B')))
+      .subscribe({ error: (err) => console.error(err) });
+    // Error emitted: SequenceError('Too many values match')
+
+    const source3 = of(
+      { name: 'Laney' },
+      { name: 'Tracy' },
+      { name: 'Lily' },
+      { name: 'Lincoln' }
+    );
+
+    source3
+      .pipe(single((x) => x.name.startsWith('B')))
+      .subscribe({ error: (err) => console.error(err) });
+    // Error emitted: NotFoundError('No values match')
+  }
+
+  skip() {
+    // emit every half second
+    const source = interval(500);
+    // skip the first 10 emitted values
+    const result = source.pipe(skip(10));
+
+    result.subscribe((value) => console.log(value));
+    // output: 10...11...12...13...
+  }
+
+  skipLast() {
+    const numbers = of(1, 2, 3, 4, 5);
+    const skipLastTwo = numbers.pipe(skipLast(2));
+    skipLastTwo.subscribe((x) => console.log(x));
+
+    // Results in:
+    // 1 2 3
+    // (4 and 5 are skipped)
+  }
+
+  skipUntil() {
+    const intervalObservable = interval(1000);
+    const click = fromEvent(document, 'click');
+
+    const emitAfterClick = intervalObservable.pipe(skipUntil(click));
+    // clicked at 4.6s. output: 5...6...7...8........ or
+    // clicked at 7.3s. output: 8...9...10..11.......
+    emitAfterClick.subscribe((value) => console.log(value));
+  }
+
+  skipWhile1() {
+    const source = from([
+      'Green Arrow',
+      'SuperMan',
+      'Flash',
+      'SuperGirl',
+      'Black Canary',
+    ]);
+    // Skip the heroes until SuperGirl
+    const example = source.pipe(skipWhile((hero) => hero !== 'SuperGirl'));
+    // output: SuperGirl, Black Canary
+    example.subscribe((femaleHero) => console.log(femaleHero));
+  }
+
+  skipWhile2() {
+    const source = from([1, 2, 3, 4, 5, 6, 7, 9, 10]);
+    const example = source.pipe(skipWhile((_, i) => i !== 5));
+    // output: 6, 7, 9, 10
+    example.subscribe((value) => console.log(value));
+  }
+
+  take() {
+    const intervalCount = interval(1000);
+    const takeFive = intervalCount.pipe(take(5));
+    takeFive.subscribe((x) => console.log(x));
+
+    // Logs:
+    // 0
+    // 1
+    // 2
+    // 3
+    // 4
+  }
+
+  takeLast() {
+    const many = range(1, 100);
+    const lastThree = many.pipe(takeLast(3));
+    lastThree.subscribe((x) => console.log(x));
+  }
+
+  takeUntil() {
+    const source = interval(1000);
+    const clicks = fromEvent(document, 'click');
+    const result = source.pipe(takeUntil(clicks));
+    result.subscribe((x) => console.log(x));
+  }
+
+  takeWhile() {
+    const clicks = fromEvent<PointerEvent>(document, 'click');
+    const result = clicks.pipe(takeWhile((ev) => ev.clientX > 200));
+    result.subscribe((x) => console.log(x));
+  }
+
+  throttle() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(throttle(() => interval(1000)));
+
+    result.subscribe((x) => console.log(x));
+  }
+
+  throttleTime() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(throttleTime(1000));
+
+    result.subscribe((x) => console.log(x));
+  }
+
+  combineLatestAll1() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(combineLatestAll(1000 as any) as any);
+
+    result.subscribe((x) => console.log(x));
+  }
+
+  concatAll() {
+    const clicks = fromEvent(document, 'click');
+    const higherOrder = clicks.pipe(map(() => interval(1000).pipe(take(4))));
+    const firstOrder = higherOrder.pipe(concatAll());
+    firstOrder.subscribe((x) => console.log(x));
+  }
+
+  exhaustAll() {
+    const clicks = fromEvent(document, 'click');
+    const higherOrder = clicks.pipe(map(() => interval(1000).pipe(take(5))));
+    const result = higherOrder.pipe(exhaustAll());
+    result.subscribe((x) => console.log(x));
+  }
+
+  mergeAll1() {
+    const clicks = fromEvent(document, 'click');
+    const higherOrder = clicks.pipe(map(() => interval(1000)));
+    const firstOrder = higherOrder.pipe(mergeAll());
+
+    firstOrder.subscribe((x) => console.log(x));
+  }
+  mergeAll2() {
+    const clicks = fromEvent(document, 'click');
+    const higherOrder = clicks.pipe(map(() => interval(1000).pipe(take(10))));
+    const firstOrder = higherOrder.pipe(mergeAll(2));
+
+    firstOrder.subscribe((x) => console.log(x));
+  }
+
+  switchAll() {
+    const clicks = fromEvent(document, 'click').pipe(
+      tap(() => console.log('click'))
+    );
+    const source = clicks.pipe(map(() => interval(1000)));
+
+    source.pipe(switchAll()).subscribe((x) => console.log(x));
+  }
+
+  startsWith() {
+    timer(1000)
+      .pipe(
+        map(() => 'timer emit'),
+        startWith('timer start')
+      )
+      .subscribe((x) => console.log(x));
+
+    // results:
+    // 'timer start'
+    // 'timer emit'
+  }
+
+  withLatest() {
+    const clicks = fromEvent(document, 'click');
+    const timer = interval(1000);
+    const result = clicks.pipe(withLatestFrom(timer));
     result.subscribe((x) => console.log(x));
   }
 
