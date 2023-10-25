@@ -5,6 +5,7 @@ import {
   ErrorNotification,
   NextNotification,
   Observable,
+  Subject,
   Subscription,
   animationFrameScheduler,
   asapScheduler,
@@ -22,7 +23,9 @@ import {
   concatAll,
   concatMap,
   concatMapTo,
+  count,
   debounce,
+  defaultIfEmpty,
   defer,
   delay,
   delayWhen,
@@ -31,10 +34,13 @@ import {
   distinctUntilChanged,
   distinctUntilKeyChanged,
   elementAt,
+  every,
   exhaustAll,
   exhaustMap,
   expand,
   filter,
+  find,
+  findIndex,
   first,
   forkJoin,
   from,
@@ -45,15 +51,18 @@ import {
   ignoreElements,
   iif,
   interval,
+  isEmpty,
   last,
   map,
   mapTo,
   materialize,
+  max,
   merge,
   mergeAll,
   mergeMap,
   mergeMapTo,
   mergeScan,
+  min,
   observeOn,
   of,
   pairwise,
@@ -1810,6 +1819,101 @@ export class ObservablesComponentComponent {
     example.subscribe((value) => console.log(value));
 
     // output: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  }
+
+  defaultIfEmpty() {
+    const clicks = fromEvent(document, 'click');
+    const clicksBeforeFive = clicks.pipe(takeUntil(interval(3000)));
+    const result = clicksBeforeFive.pipe(defaultIfEmpty('no clicks'));
+    result.subscribe((x) => console.log(x));
+  }
+  every() {
+    of(1, 2, 3, 4, 5, 6)
+      .pipe(every((x) => x < 5))
+      .subscribe((x) => console.log(x)); // -> false
+  }
+  find() {
+    const div = document.createElement('div');
+    div.style.cssText = 'width: 200px; height: 200px; background: #09c;';
+    document.body.appendChild(div);
+
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(
+      find((ev) => (<HTMLElement>ev.target).tagName === 'DIV')
+    );
+    result.subscribe((x) => console.log(x));
+  }
+  findIndex() {
+    const div = document.createElement('div');
+    div.style.cssText = 'width: 200px; height: 200px; background: #09c;';
+    document.body.appendChild(div);
+
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(
+      findIndex((ev) => (<HTMLElement>ev.target).tagName === 'DIV')
+    );
+    result.subscribe((x) => console.log(x));
+  }
+  isEmpty() {
+    const source = new Subject<string>();
+    const result = source.pipe(isEmpty());
+
+    source.subscribe((x) => console.log(x));
+    result.subscribe((x) => console.log(x));
+
+    source.next('a');
+    source.next('b');
+    source.next('c');
+    source.complete();
+
+    // Outputs
+    // 'a'
+    // false
+    // 'b'
+    // 'c'
+  }
+
+  count() {
+    const numbers = range(1, 7);
+    const result = numbers.pipe(count((i) => i % 2 === 1));
+    result.subscribe((x) => console.log(x));
+    // Results in:
+    // 4
+  }
+  max() {
+    of(
+      { age: 7, name: 'Foo' },
+      { age: 5, name: 'Bar' },
+      { age: 9, name: 'Beer' }
+    )
+      .pipe(max((a, b) => (a.age < b.age ? -1 : 1)))
+      .subscribe((x) => console.log(x.name));
+
+    // Outputs
+    // 'Beer'
+  }
+  min() {
+    of(
+      { age: 7, name: 'Foo' },
+      { age: 5, name: 'Bar' },
+      { age: 9, name: 'Beer' }
+    )
+      .pipe(min((a, b) => (a.age < b.age ? -1 : 1)))
+      .subscribe((x) => console.log(x.name));
+
+    // Outputs
+    // 'Bar'
+  }
+  reduce() {
+    const clicksInFiveSeconds = fromEvent(document, 'click').pipe(
+      takeUntil(interval(5000))
+    );
+
+    const ones = clicksInFiveSeconds.pipe(map(() => 1));
+    const seed = 0;
+    const count = ones.pipe(reduce((acc, one) => acc + one, seed));
+
+    count.subscribe((x) => console.log(x));
   }
 
   // window1() {
