@@ -6,33 +6,57 @@ import {
   Subscription,
   asapScheduler,
   asyncScheduler,
+  buffer,
+  bufferCount,
+  bufferToggle,
+  bufferWhen,
   catchError,
   combineLatest,
   concat,
   concatAll,
   concatMap,
+  concatMapTo,
   defer,
   delay,
+  exhaustMap,
+  expand,
   first,
   forkJoin,
   from,
   fromEvent,
   fromEventPattern,
   generate,
+  groupBy,
   iif,
   interval,
   last,
   map,
+  mapTo,
   merge,
+  mergeAll,
+  mergeMap,
+  mergeMapTo,
+  mergeScan,
   of,
+  pairwise,
   partition,
+  pluck,
   race,
   range,
+  reduce,
+  scan,
+  skip,
   startWith,
+  switchMap,
+  switchMapTo,
   take,
   takeUntil,
   throwError,
   timer,
+  windowCount,
+  windowTime,
+  windowToggle,
+  windowWhen,
   zip,
 } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
@@ -705,6 +729,351 @@ export class ObservablesComponentComponent {
     // { age: 25, name: 'Bar', isDev: true }
     // { age: 29, name: 'Beer', isDev: false }
   }
+
+  buffer() {
+    const clicks = fromEvent(document, 'click');
+    const intervalEvents = interval(1000);
+    const buffered = intervalEvents.pipe(buffer(clicks));
+    buffered.subscribe((x) => console.log(x));
+  }
+
+  bufferCount1() {
+    const clicks = fromEvent(document, 'click');
+    const buffered = clicks.pipe(bufferCount(2));
+    buffered.subscribe((x) => console.log(x));
+  }
+  bufferCount2() {
+    const clicks = fromEvent(document, 'click');
+    const buffered = clicks.pipe(bufferCount(2, 1));
+    buffered.subscribe((x) => console.log(x));
+  }
+
+  bufferToggle() {
+    const clicks = fromEvent(document, 'click');
+    const openings = interval(1000);
+    const buffered = clicks.pipe(
+      bufferToggle(openings, (i) => (i % 2 ? interval(500) : EMPTY))
+    );
+    buffered.subscribe((x) => console.log(x));
+  }
+
+  bufferWhen() {
+    const clicks = fromEvent(document, 'click');
+    const buffered = clicks.pipe(
+      bufferWhen(() => interval(1000 + Math.random() * 4000))
+    );
+    buffered.subscribe((x) => console.log(x));
+  }
+
+  concatMap() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(concatMap((ev) => interval(1000).pipe(take(4))));
+    result.subscribe((x) => console.log(x));
+
+    // Results in the following:
+    // (results are not concurrent)
+    // For every click on the "document" it will emit values 0 to 3 spaced
+    // on a 1000ms interval
+    // one click = 1000ms-> 0 -1000ms-> 1 -1000ms-> 2 -1000ms-> 3
+  }
+
+  concatMapTo() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(concatMapTo(interval(1000).pipe(take(4))));
+    result.subscribe((x) => console.log(x));
+
+    // Results in the following:
+    // (results are not concurrent)
+    // For every click on the "document" it will emit values 0 to 3 spaced
+    // on a 1000ms interval
+    // one click = 1000ms-> 0 -1000ms-> 1 -1000ms-> 2 -1000ms-> 3
+  }
+
+  exhaustMap() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(exhaustMap(() => interval(1000).pipe(take(5))));
+    result.subscribe((x) => console.log(x));
+  }
+
+  expand() {
+    const clicks = fromEvent(document, 'click');
+    const powersOfTwo = clicks.pipe(
+      map(() => 1),
+      expand((x) => of(2 * x).pipe(delay(1000))),
+      take(10)
+    );
+    powersOfTwo.subscribe((x) => console.log(x));
+  }
+
+  groupBy1() {
+    of(
+      { id: 1, name: 'JavaScript' },
+      { id: 2, name: 'Parcel' },
+      { id: 2, name: 'webpack' },
+      { id: 1, name: 'TypeScript' },
+      { id: 3, name: 'TSLint' }
+    )
+      .pipe(
+        groupBy((p) => p.id),
+        mergeMap((group$) =>
+          group$.pipe(reduce((acc: any, cur) => [...acc, cur], []))
+        )
+      )
+      .subscribe((p) => console.log(p));
+
+    // displays:
+    // [{ id: 1, name: 'JavaScript' }, { id: 1, name: 'TypeScript'}]
+    // [{ id: 2, name: 'Parcel' }, { id: 2, name: 'webpack'}]
+    // [{ id: 3, name: 'TSLint' }]
+  }
+
+  groupBy2() {
+    of(
+      { id: 1, name: 'JavaScript' },
+      { id: 2, name: 'Parcel' },
+      { id: 2, name: 'webpack' },
+      { id: 1, name: 'TypeScript' },
+      { id: 3, name: 'TSLint' }
+    )
+      .pipe(
+        groupBy((p) => p.id, { element: (p) => p.name }),
+        mergeMap((group$) =>
+          group$.pipe(reduce((acc, cur) => [...acc, cur], [`${group$.key}`]))
+        ),
+        map((arr) => ({ id: parseInt(arr[0], 10), values: arr.slice(1) }))
+      )
+      .subscribe((p) => console.log(p));
+
+    // displays:
+    // { id: 1, values: [ 'JavaScript', 'TypeScript' ] }
+    // { id: 2, values: [ 'Parcel', 'webpack' ] }
+    // { id: 3, values: [ 'TSLint' ] }
+  }
+
+  map() {
+    const clicks = fromEvent<PointerEvent>(document, 'click');
+    const positions = clicks.pipe(map((ev) => ev.clientX));
+
+    positions.subscribe((x) => console.log(x));
+  }
+
+  mapTo() {
+    const clicks = fromEvent(document, 'click');
+    const greetings = clicks.pipe(mapTo('Hi'));
+
+    greetings.subscribe((x) => console.log(x));
+  }
+
+  mergeMap() {
+    const letters = of('a', 'b', 'c');
+    const result = letters.pipe(
+      mergeMap((x) => interval(1000).pipe(map((i) => x + i)))
+    );
+
+    result.subscribe((x) => console.log(x));
+
+    // Results in the following:
+    // a0
+    // b0
+    // c0
+    // a1
+    // b1
+    // c1
+    // continues to list a, b, c every second with respective ascending integers
+  }
+
+  mergeMapTo() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(mergeMapTo(interval(1000)));
+
+    result.subscribe((x) => console.log(x));
+  }
+
+  mergeScan() {
+    const click$ = fromEvent(document, 'click');
+    const one$ = click$.pipe(map(() => 1));
+    const seed = 0;
+    const count$ = one$.pipe(mergeScan((acc, one) => of(acc + one), seed));
+
+    count$.subscribe((x) => console.log(x));
+
+    // Results:
+    // 1
+    // 2
+    // 3
+    // 4
+    // ...and so on for each click
+  }
+
+  pairWise() {
+    const clicks = fromEvent<PointerEvent>(document, 'click');
+    const pairs = clicks.pipe(pairwise());
+    const distance = pairs.pipe(
+      map(([first, second]) => {
+        const x0 = first.clientX;
+        const y0 = first.clientY;
+        const x1 = second.clientX;
+        const y1 = second.clientY;
+        return Math.sqrt(Math.pow(x0 - x1, 2) + Math.pow(y0 - y1, 2));
+      })
+    );
+
+    distance.subscribe((x) => console.log(x));
+  }
+
+  // partition2() {
+
+  // const div = document.createElement('div');
+  // div.style.cssText = 'width: 200px; height: 200px; background: #09c;';
+  // document.body.appendChild(div);
+
+  // const clicks = fromEvent(document, 'click');
+  // const [clicksOnDivs, clicksElsewhere]: any = clicks.pipe(
+  //   partition((ev) => (<HTMLElement>ev.target).tagName === 'DIV')
+  // );
+
+  // clicksOnDivs.subscribe((x) => console.log('DIV clicked: ', x));
+  // clicksElsewhere.subscribe((x) => console.log('Other clicked: ', x));}
+
+  pluck() {
+    const clicks = fromEvent(document, 'click');
+    const tagNames = clicks.pipe(pluck('target', 'tagName'));
+
+    tagNames.subscribe((x) => console.log(x));
+  }
+
+  scan1() {
+    const numbers$ = of(1, 2, 3);
+
+    numbers$
+      .pipe(
+        // Get the sum of the numbers coming in.
+        scan((total, n) => total + n),
+        // Get the average by dividing the sum by the total number
+        // received so far (which is 1 more than the zero-based index).
+        map((sum, index) => sum / (index + 1))
+      )
+      .subscribe(console.log);
+  }
+
+  scan2() {
+    const firstTwoFibs = [0, 1];
+    // An endless stream of Fibonacci numbers.
+    const fibonacci$ = interval(1000).pipe(
+      // Scan to get the fibonacci numbers (after 0, 1)
+      scan(([a, b]) => [b, a + b], firstTwoFibs),
+      // Get the second number in the tuple, it's the one you calculated
+      map(([, n]) => n),
+      // Start with our first two digits :)
+      startWith(...firstTwoFibs)
+    );
+
+    fibonacci$.subscribe(console.log);
+  }
+
+  switchMap1() {
+    const switched = of(1, 2, 3).pipe(switchMap((x) => of(x, x ** 2, x ** 3)));
+    switched.subscribe((x) => console.log(x));
+    // outputs
+    // 1
+    // 1
+    // 1
+    // 2
+    // 4
+    // 8
+    // 3
+    // 9
+    // 27
+  }
+
+  switchMap2() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(switchMap(() => interval(1000)));
+    result.subscribe((x) => console.log(x));
+  }
+
+  switchMapTo() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(switchMapTo(interval(1000)));
+    result.subscribe((x) => console.log(x));
+  }
+
+  windowCount1() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(
+      windowCount(3),
+      map((win) => win.pipe(skip(1))), // skip first of every 3 clicks
+      mergeAll() // flatten the Observable-of-Observables
+    );
+    result.subscribe((x) => console.log(x));
+  }
+
+  windowCount2() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(
+      windowCount(2, 3),
+      mergeAll() // flatten the Observable-of-Observables
+    );
+    result.subscribe((x) => console.log(x));
+  }
+
+  windowTime1() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(
+      windowTime(1000),
+      map((win) => win.pipe(take(2))), // take at most 2 emissions from each window
+      mergeAll() // flatten the Observable-of-Observables
+    );
+    result.subscribe((x) => console.log(x));
+  }
+  windowTime2() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(
+      windowTime(1000, 5000),
+      map((win) => win.pipe(take(2))), // take at most 2 emissions from each window
+      mergeAll() // flatten the Observable-of-Observables
+    );
+    result.subscribe((x) => console.log(x));
+  }
+  windowTime3() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(
+      windowTime(1000, 5000, 2), // take at most 2 emissions from each window
+      mergeAll() // flatten the Observable-of-Observables
+    );
+    result.subscribe((x) => console.log(x));
+  }
+
+  windowToggle() {
+    const clicks = fromEvent(document, 'click');
+    const openings = interval(1000);
+    const result = clicks.pipe(
+      windowToggle(openings, (i) => (i % 2 ? interval(500) : EMPTY)),
+      mergeAll()
+    );
+    result.subscribe((x) => console.log(x));
+  }
+
+  windowWhen() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(
+      windowWhen(() => interval(1000 + Math.random() * 4000)),
+      map((win) => win.pipe(take(2))), // take at most 2 emissions from each window
+      mergeAll() // flatten the Observable-of-Observables
+    );
+    result.subscribe((x) => console.log(x));
+  }
+
+  // window1() {
+  // const clicks = fromEvent(document, 'click');
+  // const sec = interval(1000);
+  // const result = clicks.pipe(
+  //   window(sec),
+  //   map((win) => win.pipe(take(2))), // take at most 2 emissions from each window
+  //   mergeAll() // flatten the Observable-of-Observables
+  // );
+  // result.subscribe((x) => console.log(x));
+  // }
 
   //
   //
