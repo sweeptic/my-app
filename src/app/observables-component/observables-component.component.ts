@@ -7,10 +7,14 @@ import {
   asapScheduler,
   asyncScheduler,
   catchError,
+  combineLatest,
+  concat,
   concatAll,
   concatMap,
   defer,
+  delay,
   first,
+  forkJoin,
   from,
   fromEvent,
   fromEventPattern,
@@ -19,12 +23,17 @@ import {
   interval,
   last,
   map,
+  merge,
   of,
+  partition,
+  race,
   range,
+  startWith,
   take,
   takeUntil,
   throwError,
   timer,
+  zip,
 } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 
@@ -504,6 +513,198 @@ export class ObservablesComponentComponent {
   }
   // Logs:
   // 'The end'}
+
+  //
+  //
+  //
+  //
+
+  combineLatest1() {
+    const firstTimer = timer(0, 1000); // emit 0, 1, 2... after every second, starting from now
+    const secondTimer = timer(500, 1000); // emit 0, 1, 2... after every second, starting 0,5s from now
+    const combinedTimers = combineLatest([firstTimer, secondTimer]);
+    combinedTimers.subscribe((value) => console.log(value));
+  }
+
+  combineLatest2() {
+    const observables = {
+      a: of(1).pipe(delay(1000), startWith(0)),
+      b: of(5).pipe(delay(5000), startWith(0)),
+      c: of(10).pipe(delay(10000), startWith(0)),
+    };
+    const combined = combineLatest(observables);
+    combined.subscribe((value) => console.log(value));
+  }
+  // Logs
+  // { a: 0, b: 0, c: 0 } immediately
+  // { a: 1, b: 0, c: 0 } after 1s
+  // { a: 1, b: 5, c: 0 } after 5s
+  // { a: 1, b: 5, c: 10 } after 10s}
+  combineLatest3() {
+    const observables = [1, 5, 10].map((n) =>
+      of(n).pipe(
+        delay(n * 1000), // emit 0 and then emit n after n seconds
+        startWith(0)
+      )
+    );
+    const combined = combineLatest(observables);
+    combined.subscribe((value) => console.log(value));
+    // Logs
+    // [0, 0, 0] immediately
+    // [1, 0, 0] after 1s
+    // [1, 5, 0] after 5s
+    // [1, 5, 10] after 10s
+  }
+
+  combineLatest4() {
+    const weight = of(70, 72, 76, 79, 75);
+    const height = of(1.76, 1.77, 1.78);
+    const bmi = combineLatest([weight, height]).pipe(
+      map(([w, h]) => w / (h * h))
+    );
+    bmi.subscribe((x) => console.log('BMI is ' + x));
+  }
+
+  concat1() {
+    const timer = interval(1000).pipe(take(4));
+    const sequence = range(1, 10);
+    const result = concat(timer, sequence);
+    result.subscribe((x) => console.log(x));
+  }
+  concat2() {
+    const timer1 = interval(1000).pipe(take(10));
+    const timer2 = interval(2000).pipe(take(6));
+    const timer3 = interval(500).pipe(take(10));
+
+    const result = concat(timer1, timer2, timer3);
+    result.subscribe((x) => console.log(x));
+
+    // results in the following:
+    // (Prints to console sequentially)
+    // -1000ms-> 0 -1000ms-> 1 -1000ms-> ... 9
+    // -2000ms-> 0 -2000ms-> 1 -2000ms-> ... 5
+    // -500ms-> 0 -500ms-> 1 -500ms-> ... 9
+  }
+  concat3() {
+    const timer = interval(1000).pipe(take(2));
+
+    concat(timer, timer) // concatenating the same Observable!
+      .subscribe({
+        next: (value) => console.log(value),
+        complete: () => console.log('...and it is done!'),
+      });
+
+    // Logs:
+    // 0 after 1s
+    // 1 after 2s
+    // 0 after 3s
+    // 1 after 4s
+    // '...and it is done!' also after 4s
+  }
+
+  forkJoin1() {
+    const observable = forkJoin({
+      foo: of(1, 2, 3, 4),
+      bar: Promise.resolve(8),
+      baz: timer(4000),
+    });
+    observable.subscribe({
+      next: (value) => console.log(value),
+      complete: () => console.log('This is how it ends!'),
+    });
+  }
+  forkJoin2() {
+    const observable = forkJoin([
+      of(1, 2, 3, 4),
+      Promise.resolve(8),
+      timer(4000),
+    ]);
+    observable.subscribe({
+      next: (value) => console.log(value),
+      complete: () => console.log('This is how it ends!'),
+    });
+
+    // Logs:
+    // [4, 8, 0] after 4 seconds
+    // 'This is how it ends!' immediately after
+  }
+
+  merge1() {
+    const clicks = fromEvent(document, 'click');
+    const timer = interval(1000);
+    const clicksOrTimer = merge(clicks, timer);
+    clicksOrTimer.subscribe((x) => console.log(x));
+
+    // Results in the following:
+    // timer will emit ascending values, one every second(1000ms) to console
+    // clicks logs MouseEvents to console every time the "document" is clicked
+    // Since the two streams are merged you see these happening
+    // as they occur.
+  }
+
+  merge2() {
+    const timer1 = interval(1000).pipe(take(10));
+    const timer2 = interval(2000).pipe(take(6));
+    const timer3 = interval(500).pipe(take(10));
+
+    const concurrent = 2; // the argument
+    const merged = merge(timer1, timer2, timer3, concurrent);
+    merged.subscribe((x) => console.log(x));
+
+    // Results in the following:
+    // - First timer1 and timer2 will run concurrently
+    // - timer1 will emit a value every 1000ms for 10 iterations
+    // - timer2 will emit a value every 2000ms for 6 iterations
+    // - after timer1 hits its max iteration, timer2 will
+    //   continue, and timer3 will start to run concurrently with timer2
+    // - when timer2 hits its max iteration it terminates, and
+    //   timer3 will continue to emit a value every 500ms until it is complete
+  }
+
+  partition() {
+    const observableValues = of(1, 2, 3, 4, 5, 6);
+    const [evens$, odds$] = partition(
+      observableValues,
+      (value) => value % 2 === 0
+    );
+
+    odds$.subscribe((x) => console.log('odds', x));
+    evens$.subscribe((x) => console.log('evens', x));
+
+    // Logs:
+    // odds 1
+    // odds 3
+    // odds 5
+    // evens 2
+    // evens 4
+    // evens 6
+  }
+
+  winner() {
+    const obs1 = interval(7000).pipe(map(() => 'slow one'));
+    const obs2 = interval(3000).pipe(map(() => 'fast one'));
+    const obs3 = interval(5000).pipe(map(() => 'medium one'));
+
+    race(obs1, obs2, obs3).subscribe((winner) => console.log(winner));
+
+    // Outputs
+    // a series of 'fast one'
+  }
+
+  zip() {
+    const age$ = of(27, 25, 29);
+    const name$ = of('Foo', 'Bar', 'Beer');
+    const isDev$ = of(true, true, false);
+
+    zip(age$, name$, isDev$)
+      .pipe(map(([age, name, isDev]) => ({ age, name, isDev })))
+      .subscribe((x) => console.log(x));
+
+    // Outputs
+    // { age: 27, name: 'Foo', isDev: true }
+    // { age: 25, name: 'Bar', isDev: true }
+    // { age: 29, name: 'Beer', isDev: false }
+  }
 
   //
   //
