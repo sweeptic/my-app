@@ -7,6 +7,7 @@ import { ServerComponent } from './basic-components/server.component';
 import { FormsModule } from '@angular/forms';
 import { HighlightDirective } from './basic-components/highlight.directive';
 import { HighlightDirectiveHostBinding } from './basic-components/highlightHostbinding.directive';
+import { HttpClientModule } from '@angular/common/http';
 import { UnlessDirective } from './basic-components/unless.directive';
 import { EventsComponentsComponent } from './events-components/events-components.component';
 import { HomeComponentComponent } from './home-component/home-component.component';
@@ -32,7 +33,7 @@ import { CounterService } from './services/counter.service';
     Outer1Component,
     Outer2Component,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CounterService],
   bootstrap: [AppComponent],
 })
