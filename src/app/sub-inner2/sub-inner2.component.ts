@@ -9,9 +9,11 @@ export class SubInner2Component {
   counter?: number;
 
   constructor(private subjCounter: ObjectService) {
-    this.subjCounter.increase.subscribe((value) => {
-      console.log(value);
-      this.counter = value;
+    this.subjCounter.increase.subscribe({
+      next: (value) => {
+        console.log(value);
+        this.counter = value;
+      },
     });
   }
 }
