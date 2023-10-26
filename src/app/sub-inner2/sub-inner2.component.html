@@ -1,5 +1,9 @@
 <div class="container p-3 m-3" style="background-color: lightcoral">
   <p>sub-inner2 works!</p>
   {{ this.counter }}
+  <hr />
+  <ul>
+    <li *ngFor="let item of list">{{ item }}</li>
+  </ul>
   <app-sub-outer2></app-sub-outer2>
 </div>

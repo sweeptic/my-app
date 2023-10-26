@@ -5,6 +5,7 @@ import { EventsComponentsComponent } from './events-components/events-components
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { ObservablesComponentComponent } from './observables-component/observables-component.component';
 import { SubjectComponent } from './subject/subject.component';
+import { SchedulerComponent } from './scheduler/scheduler.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponentComponent },
@@ -24,17 +25,13 @@ const appRoutes: Routes = [
     path: 'object',
     component: SubjectComponent,
   },
-  //   { path: 'not-found', component: PageNotFoundComponent },
-  //   {
-  //     path: 'not-found',
-  //     component: ErrorPageComponent,
-  //     data: { message: 'Page not found!' },
-  //   },
-  //   { path: '**', redirectTo: '/not-found' },
+  {
+    path: 'scheduler',
+    component: SchedulerComponent,
+  },
 ];
 
 @NgModule({
-  //   imports: [RouterModule.forRoot(appRoutes)],
   imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
   exports: [RouterModule],
 })

@@ -22,6 +22,7 @@ import { SubInner1Component } from './sub-inner1/sub-inner1.component';
 import { SubInner2Component } from './sub-inner2/sub-inner2.component';
 import { SubOuter2Component } from './subInner2/sub-outer2/sub-outer2.component';
 import { SubOuter1Component } from './subInner1/sub-outer1/sub-outer1.component';
+import { SchedulerComponent } from './scheduler/scheduler.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { SubOuter1Component } from './subInner1/sub-outer1/sub-outer1.component'
     SubInner2Component,
     SubOuter2Component,
     SubOuter1Component,
+    SchedulerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CounterService],

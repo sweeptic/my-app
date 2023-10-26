@@ -1,11 +1,12 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, connectable, from, multicast } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ObjectService {
-  @Output() increase = new Subject<number>();
+  increase = new Subject<number>();
+  numList = new Subject<number>();
   counter = 0;
 
   constructor() {}
@@ -13,8 +14,15 @@ export class ObjectService {
   increaseCounterSubj() {
     this.counter = this.counter + 1;
     console.log('this.counter', this.counter);
-
     this.increase.next(this.counter);
+  }
+
+  listNum() {
+    const source = from([1, 2, 3]);
+    // source.subscribe(this.numList);
+
+    const multicasted = connectable(source, { connector: () => this.numList });
+    multicasted.connect();
   }
 
   getCounterSubj() {

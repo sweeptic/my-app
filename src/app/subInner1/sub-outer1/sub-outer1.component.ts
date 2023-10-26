@@ -7,9 +7,22 @@ import { ObjectService } from 'src/app/services/subject.service';
   templateUrl: './sub-outer1.component.html',
 })
 export class SubOuter1Component {
-  constructor(private subjService: ObjectService) {}
+  list?: number[] = [];
+
+  constructor(private subjService: ObjectService) {
+    this.subjService.numList.subscribe({
+      next: (v: number) => {
+        console.log('v', v);
+        this.list?.push(v);
+      },
+    });
+  }
 
   onClickHandler() {
     this.subjService.increaseCounterSubj();
+  }
+
+  onClickHandlerList() {
+    this.subjService.listNum();
   }
 }

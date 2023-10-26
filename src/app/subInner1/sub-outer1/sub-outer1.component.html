@@ -1,4 +1,10 @@
 <div class="container p-3 m-3" style="background-color: lightpink">
   <p>sub-outer1 works!</p>
-  <a class="btn btn-primary btn-sm" (click)="onClickHandler()"> BUTTON</a>
+  <a class="btn btn-primary btn-sm m-1" (click)="onClickHandler()"> BUTTON</a>
+  <a class="btn btn-primary btn-sm m-1" (click)="onClickHandlerList()"
+    >LIST BUTTON</a
+  >
+  <ul>
+    <li *ngFor="let item of list">{{ item }}</li>
+  </ul>
 </div>
