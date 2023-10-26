@@ -17,6 +17,11 @@ import { Inner2Component } from './inner2/inner2.component';
 import { Outer1Component } from './outer1/outer1.component';
 import { Outer2Component } from './outer2/outer2.component';
 import { CounterService } from './services/counter.service';
+import { SubjectComponent } from './subject/subject.component';
+import { SubInner1Component } from './sub-inner1/sub-inner1.component';
+import { SubInner2Component } from './sub-inner2/sub-inner2.component';
+import { SubOuter2Component } from './subInner2/sub-outer2/sub-outer2.component';
+import { SubOuter1Component } from './subInner1/sub-outer1/sub-outer1.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +37,11 @@ import { CounterService } from './services/counter.service';
     Inner2Component,
     Outer1Component,
     Outer2Component,
+    SubjectComponent,
+    SubInner1Component,
+    SubInner2Component,
+    SubOuter2Component,
+    SubOuter1Component,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CounterService],

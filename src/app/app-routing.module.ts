@@ -4,6 +4,7 @@ import { ServerComponent } from './basic-components/server.component';
 import { EventsComponentsComponent } from './events-components/events-components.component';
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { ObservablesComponentComponent } from './observables-component/observables-component.component';
+import { SubjectComponent } from './subject/subject.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponentComponent },
@@ -18,6 +19,10 @@ const appRoutes: Routes = [
   {
     path: 'observables',
     component: ObservablesComponentComponent,
+  },
+  {
+    path: 'object',
+    component: SubjectComponent,
   },
   //   { path: 'not-found', component: PageNotFoundComponent },
   //   {
