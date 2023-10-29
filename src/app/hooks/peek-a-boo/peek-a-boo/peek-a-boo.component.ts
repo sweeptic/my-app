@@ -10,21 +10,13 @@ import {
   OnDestroy,
   SimpleChanges,
 } from '@angular/core';
-import { LoggerService } from '../services/logger.service';
-import { PeekABooDirective } from '../peek-aboo-directive';
+import { LoggerService } from '../../../services/logger.service';
+import { PeekABooDirective } from '../../../peek-aboo-directive';
 
 @Component({
   selector: 'app-peek-a-boo',
   templateUrl: './peek-a-boo.component.html',
 })
-//   extends PeekABooDirective
-// OnInit,
-// DoCheck,
-// AfterContentInit,
-// AfterContentChecked,
-// AfterViewInit,
-// AfterViewChecked,
-// OnDestroy
 export class PeekABooComponent
   extends PeekABooDirective
   implements

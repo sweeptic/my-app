@@ -24,9 +24,11 @@ import { SubOuter2Component } from './subInner2/sub-outer2/sub-outer2.component'
 import { SubOuter1Component } from './subInner1/sub-outer1/sub-outer1.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
 import { LifecyclehooksComponent } from './lifecyclehooks/lifecyclehooks.component';
-import { PeekABooComponent } from './peek-a-boo/peek-a-boo.component';
-import { PeekABooParentComponent } from './peek-a-boo-parent/peek-a-boo-parent.component';
+import { PeekABooComponent } from './hooks/peek-a-boo/peek-a-boo/peek-a-boo.component';
+import { PeekABooParentComponent } from './hooks/peek-a-boo/peek-a-boo-parent/peek-a-boo-parent.component';
 import { PeekABooDirective } from './peek-aboo-directive';
+import { OnChangesComponent } from './hooks/onchanges/on-changes/on-changes.component';
+import { OnChangesParentComponent } from './hooks/onchanges/on-changes-parent/on-changes-parent.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { PeekABooDirective } from './peek-aboo-directive';
     PeekABooComponent,
     PeekABooParentComponent,
     PeekABooDirective,
+    OnChangesComponent,
+    OnChangesParentComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CounterService],
