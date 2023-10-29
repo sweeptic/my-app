@@ -6,6 +6,7 @@ import { HomeComponentComponent } from './home-component/home-component.componen
 import { ObservablesComponentComponent } from './observables-component/observables-component.component';
 import { SubjectComponent } from './subject/subject.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
+import { LifecyclehooksComponent } from './lifecyclehooks/lifecyclehooks.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponentComponent },
@@ -28,6 +29,10 @@ const appRoutes: Routes = [
   {
     path: 'scheduler',
     component: SchedulerComponent,
+  },
+  {
+    path: 'lifecyclehooks',
+    component: LifecyclehooksComponent,
   },
 ];
 
