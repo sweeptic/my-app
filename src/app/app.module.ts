@@ -40,6 +40,7 @@ import { AfterContentParentComponent } from './hooks/after-content-parent/after-
 import { ChildComponent } from './hooks/child/child.component';
 import { CounterParentComponent } from './hooks/counter-parent/counter-parent.component';
 import { CounterComponent } from './hooks/counter/counter.component';
+import { ViewencapsulationComponent } from './viewencapsulation/viewencapsulation.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { CounterComponent } from './hooks/counter/counter.component';
     ChildComponent,
     CounterParentComponent,
     CounterComponent,
+    ViewencapsulationComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CounterService],
