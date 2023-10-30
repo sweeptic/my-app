@@ -35,6 +35,9 @@ import { SubOuter2Component } from './events-components/subInner2/sub-outer2/sub
 import { AfterViewComponent } from './hooks/afterView/after-view/after-view.component';
 import { AfterViewParentComponent } from './hooks/afterView/after-view-parent/after-view-parent.component';
 import { ChildViewComponent } from './hooks/child-view/child-view.component';
+import { AfterContentComponent } from './hooks/after-content/after-content.component';
+import { AfterContentParentComponent } from './hooks/after-content-parent/after-content-parent.component';
+import { ChildComponent } from './hooks/child/child.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +70,9 @@ import { ChildViewComponent } from './hooks/child-view/child-view.component';
     AfterViewComponent,
     AfterViewParentComponent,
     ChildViewComponent,
+    AfterContentComponent,
+    AfterContentParentComponent,
+    ChildComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CounterService],
