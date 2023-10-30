@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ObjectService } from '../services/subject.service';
+import { ObjectService } from 'src/app/services/subject.service';
 
 @Component({
   selector: 'app-sub-inner2',

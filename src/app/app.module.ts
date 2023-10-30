@@ -12,16 +12,10 @@ import { UnlessDirective } from './basic-components/unless.directive';
 import { EventsComponentsComponent } from './events-components/events-components.component';
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { ObservablesComponentComponent } from './observables-component/observables-component.component';
-import { Inner1Component } from './inner1/inner1.component';
-import { Inner2Component } from './inner2/inner2.component';
-import { Outer1Component } from './outer1/outer1.component';
-import { Outer2Component } from './outer2/outer2.component';
+import { Inner1Component } from './events-components/inner1/inner1.component';
+
 import { CounterService } from './services/counter.service';
 import { SubjectComponent } from './subject/subject.component';
-import { SubInner1Component } from './sub-inner1/sub-inner1.component';
-import { SubInner2Component } from './sub-inner2/sub-inner2.component';
-import { SubOuter2Component } from './subInner2/sub-outer2/sub-outer2.component';
-import { SubOuter1Component } from './subInner1/sub-outer1/sub-outer1.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
 import { LifecyclehooksComponent } from './lifecyclehooks/lifecyclehooks.component';
 import { PeekABooComponent } from './hooks/peek-a-boo/peek-a-boo/peek-a-boo.component';
@@ -31,6 +25,16 @@ import { OnChangesComponent } from './hooks/onchanges/on-changes/on-changes.comp
 import { OnChangesParentComponent } from './hooks/onchanges/on-changes-parent/on-changes-parent.component';
 import { DoCheckComponent } from './hooks/do-check/do-check/do-check.component';
 import { DoCheckParentComponent } from './hooks/do-check/do-check-parent/do-check-parent.component';
+import { Inner2Component } from './events-components/inner2/inner2.component';
+import { Outer1Component } from './events-components/outer1/outer1.component';
+import { Outer2Component } from './events-components/outer2/outer2.component';
+import { SubInner1Component } from './events-components/sub-inner1/sub-inner1.component';
+import { SubInner2Component } from './events-components/sub-inner2/sub-inner2.component';
+import { SubOuter1Component } from './events-components/subInner1/sub-outer1/sub-outer1.component';
+import { SubOuter2Component } from './events-components/subInner2/sub-outer2/sub-outer2.component';
+import { AfterViewComponent } from './hooks/afterView/after-view/after-view.component';
+import { AfterViewParentComponent } from './hooks/afterView/after-view-parent/after-view-parent.component';
+import { ChildViewComponent } from './hooks/child-view/child-view.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +64,9 @@ import { DoCheckParentComponent } from './hooks/do-check/do-check-parent/do-chec
     OnChangesParentComponent,
     DoCheckParentComponent,
     DoCheckComponent,
+    AfterViewComponent,
+    AfterViewParentComponent,
+    ChildViewComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CounterService],
