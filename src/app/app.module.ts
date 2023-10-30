@@ -60,7 +60,7 @@ import { VersionChildComponent } from './component-communication/version-child/v
 import { VersionParentComponent } from './component-communication/version-parent/version-parent.component';
 import { VoterComponent } from './component-communication/voter/voter.component';
 import { VotetakerComponent } from './component-communication/votetaker/votetaker.component';
-import { ComponentstyleComponent } from './component-style/componentstyle.component';
+
 import { SharingdataComponent } from './sharing-data/sharingdata.component';
 import { AliasingComponent } from './sharing-data/aliasing/aliasing.component';
 import { InTheMetadataComponent } from './sharing-data/in-the-metadata/in-the-metadata.component';
@@ -68,6 +68,12 @@ import { InputOutputComponent } from './sharing-data/input-output/input-output.c
 import { ItemDetailComponent } from './sharing-data/item-detail/item-detail.component';
 import { ItemDetailMetadataComponent } from './sharing-data/item-detail-metadata/item-detail-metadata.component';
 import { ItemOutputComponent } from './sharing-data/item-output/item-output.component';
+import { HeroAppComponent } from './component-style/hero-app.component';
+import { HeroAppMainComponent } from './component-style/hero-app-main/hero-app-main.component';
+import { QuestSummaryComponent } from './component-style/quest-summary/quest-summary.component';
+import { HeroDetailsComponent } from './component-style/hero-details/hero-details.component';
+import { HeroTeamComponent } from './component-style/hero-team/hero-team.component';
+import { HeroControlsComponent } from './component-style/hero-controls/hero-controls.component';
 
 @NgModule({
   declarations: [
@@ -123,7 +129,7 @@ import { ItemOutputComponent } from './sharing-data/item-output/item-output.comp
     VersionParentComponent,
     VoterComponent,
     VotetakerComponent,
-    ComponentstyleComponent,
+    HeroAppComponent,
     SharingdataComponent,
     AliasingComponent,
     InTheMetadataComponent,
@@ -131,6 +137,11 @@ import { ItemOutputComponent } from './sharing-data/item-output/item-output.comp
     ItemDetailComponent,
     ItemDetailMetadataComponent,
     ItemOutputComponent,
+    HeroAppMainComponent,
+    QuestSummaryComponent,
+    HeroDetailsComponent,
+    HeroTeamComponent,
+    HeroControlsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CounterService],
