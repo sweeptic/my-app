@@ -46,7 +46,10 @@ import { NoEncapsulationComponent } from './viewencapsulation/no-encapsulation/n
 import { ShadowDomEncapsulationComponent } from './viewencapsulation/shadow-dom-encapsulation/shadow-dom-encapsulation.component';
 import { ComponentCommunicationComponent } from './component-communication/component-communication.component';
 import { AstronautComponent } from './component-communication/astronaut/astronaut.component';
-import { CountdownParentComponent } from './component-communication/countdown-parent/countdown-parent.component';
+import {
+  CountdownParentComponent,
+  CountdownViewChildParentComponent,
+} from './component-communication/countdown-parent/countdown-parent.component';
 import { CountdownTimerComponent } from './component-communication/countdown-timer/countdown-timer.component';
 import { HeroChildComponent } from './component-communication/hero-child/hero-child.component';
 import { HeroParentComponent } from './component-communication/hero-parent/hero-parent.component';
@@ -101,6 +104,7 @@ import { VotetakerComponent } from './component-communication/votetaker/votetake
     ComponentCommunicationComponent,
     AstronautComponent,
     CountdownParentComponent,
+    CountdownViewChildParentComponent,
     CountdownTimerComponent,
     HeroChildComponent,
     HeroParentComponent,
