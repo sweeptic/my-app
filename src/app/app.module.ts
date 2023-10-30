@@ -41,6 +41,9 @@ import { ChildComponent } from './hooks/child/child.component';
 import { CounterParentComponent } from './hooks/counter-parent/counter-parent.component';
 import { CounterComponent } from './hooks/counter/counter.component';
 import { ViewencapsulationComponent } from './viewencapsulation/viewencapsulation.component';
+import { EmulatedEncapsulationComponent } from './viewencapsulation/emulated-encapsulation/emulated-encapsulation.component';
+import { NoEncapsulationComponent } from './viewencapsulation/no-encapsulation/no-encapsulation.component';
+import { ShadowDomEncapsulationComponent } from './viewencapsulation/shadow-dom-encapsulation/shadow-dom-encapsulation.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +82,9 @@ import { ViewencapsulationComponent } from './viewencapsulation/viewencapsulatio
     CounterParentComponent,
     CounterComponent,
     ViewencapsulationComponent,
+    EmulatedEncapsulationComponent,
+    NoEncapsulationComponent,
+    ShadowDomEncapsulationComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CounterService],
