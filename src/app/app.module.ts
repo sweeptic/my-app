@@ -61,6 +61,13 @@ import { VersionParentComponent } from './component-communication/version-parent
 import { VoterComponent } from './component-communication/voter/voter.component';
 import { VotetakerComponent } from './component-communication/votetaker/votetaker.component';
 import { ComponentstyleComponent } from './componentstyle/componentstyle.component';
+import { SharingdataComponent } from './sharingdata/sharingdata.component';
+import { AliasingComponent } from './sharingdata/aliasing/aliasing.component';
+import { InTheMetadataComponent } from './sharingdata/in-the-metadata/in-the-metadata.component';
+import { InputOutputComponent } from './sharingdata/input-output/input-output.component';
+import { ItemDetailComponent } from './sharingdata/item-detail/item-detail.component';
+import { ItemDetailMetadataComponent } from './sharingdata/item-detail-metadata/item-detail-metadata.component';
+import { ItemOutputComponent } from './sharingdata/item-output/item-output.component';
 
 @NgModule({
   declarations: [
@@ -117,6 +124,13 @@ import { ComponentstyleComponent } from './componentstyle/componentstyle.compone
     VoterComponent,
     VotetakerComponent,
     ComponentstyleComponent,
+    SharingdataComponent,
+    AliasingComponent,
+    InTheMetadataComponent,
+    InputOutputComponent,
+    ItemDetailComponent,
+    ItemDetailMetadataComponent,
+    ItemOutputComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CounterService],

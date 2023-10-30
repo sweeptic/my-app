@@ -10,6 +10,7 @@ import { LifecyclehooksComponent } from './lifecyclehooks/lifecyclehooks.compone
 import { ViewencapsulationComponent } from './viewencapsulation/viewencapsulation.component';
 import { ComponentCommunicationComponent } from './component-communication/component-communication.component';
 import { ComponentstyleComponent } from './componentstyle/componentstyle.component';
+import { SharingdataComponent } from './sharingdata/sharingdata.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponentComponent },
@@ -48,6 +49,10 @@ const appRoutes: Routes = [
   {
     path: 'componentstyle',
     component: ComponentstyleComponent,
+  },
+  {
+    path: 'sharingdata',
+    component: SharingdataComponent,
   },
 ];
 
