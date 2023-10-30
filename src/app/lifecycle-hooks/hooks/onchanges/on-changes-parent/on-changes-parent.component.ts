@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Hero } from '../../../hero';
+import { Hero } from '../../../../hero';
 import { OnChangesComponent } from '../on-changes/on-changes.component';
 
 @Component({

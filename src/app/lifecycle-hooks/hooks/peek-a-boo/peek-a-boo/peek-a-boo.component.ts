@@ -10,7 +10,7 @@ import {
   OnDestroy,
   SimpleChanges,
 } from '@angular/core';
-import { LoggerService } from '../../../services/logger.service';
+import { LoggerService } from '../../../../services/logger.service';
 import { PeekABooDirective } from '../../../peek-aboo-directive';
 
 @Component({

@@ -6,7 +6,7 @@ import { HomeComponentComponent } from './home-component/home-component.componen
 import { ObservablesComponentComponent } from './observables-component/observables-component.component';
 import { SubjectComponent } from './subject/subject.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
-import { LifecyclehooksComponent } from './lifecyclehooks/lifecyclehooks.component';
+import { LifecyclehooksComponent } from './lifecycle-hooks/lifecyclehooks.component';
 import { ViewencapsulationComponent } from './view-encapsulation/viewencapsulation.component';
 import { ComponentCommunicationComponent } from './component-communication/component-communication.component';
 import { ComponentstyleComponent } from './component-style/componentstyle.component';
