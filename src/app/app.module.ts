@@ -29,6 +29,8 @@ import { PeekABooParentComponent } from './hooks/peek-a-boo/peek-a-boo-parent/pe
 import { PeekABooDirective } from './peek-aboo-directive';
 import { OnChangesComponent } from './hooks/onchanges/on-changes/on-changes.component';
 import { OnChangesParentComponent } from './hooks/onchanges/on-changes-parent/on-changes-parent.component';
+import { DoCheckComponent } from './hooks/do-check/do-check/do-check.component';
+import { DoCheckParentComponent } from './hooks/do-check/do-check-parent/do-check-parent.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { OnChangesParentComponent } from './hooks/onchanges/on-changes-parent/on
     PeekABooDirective,
     OnChangesComponent,
     OnChangesParentComponent,
+    DoCheckParentComponent,
+    DoCheckComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CounterService],
