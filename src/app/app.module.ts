@@ -60,6 +60,7 @@ import { VersionChildComponent } from './component-communication/version-child/v
 import { VersionParentComponent } from './component-communication/version-parent/version-parent.component';
 import { VoterComponent } from './component-communication/voter/voter.component';
 import { VotetakerComponent } from './component-communication/votetaker/votetaker.component';
+import { ComponentstyleComponent } from './componentstyle/componentstyle.component';
 
 @NgModule({
   declarations: [
@@ -115,6 +116,7 @@ import { VotetakerComponent } from './component-communication/votetaker/votetake
     VersionParentComponent,
     VoterComponent,
     VotetakerComponent,
+    ComponentstyleComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CounterService],

@@ -9,6 +9,7 @@ import { SchedulerComponent } from './scheduler/scheduler.component';
 import { LifecyclehooksComponent } from './lifecyclehooks/lifecyclehooks.component';
 import { ViewencapsulationComponent } from './viewencapsulation/viewencapsulation.component';
 import { ComponentCommunicationComponent } from './component-communication/component-communication.component';
+import { ComponentstyleComponent } from './componentstyle/componentstyle.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponentComponent },
@@ -43,6 +44,10 @@ const appRoutes: Routes = [
   {
     path: 'componentcommunication',
     component: ComponentCommunicationComponent,
+  },
+  {
+    path: 'componentstyle',
+    component: ComponentstyleComponent,
   },
 ];
 
