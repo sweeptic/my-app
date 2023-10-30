@@ -38,6 +38,8 @@ import { ChildViewComponent } from './hooks/child-view/child-view.component';
 import { AfterContentComponent } from './hooks/after-content/after-content.component';
 import { AfterContentParentComponent } from './hooks/after-content-parent/after-content-parent.component';
 import { ChildComponent } from './hooks/child/child.component';
+import { CounterParentComponent } from './hooks/counter-parent/counter-parent.component';
+import { CounterComponent } from './hooks/counter/counter.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +75,8 @@ import { ChildComponent } from './hooks/child/child.component';
     AfterContentComponent,
     AfterContentParentComponent,
     ChildComponent,
+    CounterParentComponent,
+    CounterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CounterService],
