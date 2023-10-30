@@ -7,10 +7,10 @@ import { ObservablesComponentComponent } from './observables-component/observabl
 import { SubjectComponent } from './subject/subject.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
 import { LifecyclehooksComponent } from './lifecyclehooks/lifecyclehooks.component';
-import { ViewencapsulationComponent } from './viewencapsulation/viewencapsulation.component';
+import { ViewencapsulationComponent } from './view-encapsulation/viewencapsulation.component';
 import { ComponentCommunicationComponent } from './component-communication/component-communication.component';
-import { ComponentstyleComponent } from './componentstyle/componentstyle.component';
-import { SharingdataComponent } from './sharingdata/sharingdata.component';
+import { ComponentstyleComponent } from './component-style/componentstyle.component';
+import { SharingdataComponent } from './sharing-data/sharingdata.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponentComponent },

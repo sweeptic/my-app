@@ -40,10 +40,10 @@ import { AfterContentParentComponent } from './hooks/after-content-parent/after-
 import { ChildComponent } from './hooks/child/child.component';
 import { CounterParentComponent } from './hooks/counter-parent/counter-parent.component';
 import { CounterComponent } from './hooks/counter/counter.component';
-import { ViewencapsulationComponent } from './viewencapsulation/viewencapsulation.component';
-import { EmulatedEncapsulationComponent } from './viewencapsulation/emulated-encapsulation/emulated-encapsulation.component';
-import { NoEncapsulationComponent } from './viewencapsulation/no-encapsulation/no-encapsulation.component';
-import { ShadowDomEncapsulationComponent } from './viewencapsulation/shadow-dom-encapsulation/shadow-dom-encapsulation.component';
+import { ViewencapsulationComponent } from './view-encapsulation/viewencapsulation.component';
+import { EmulatedEncapsulationComponent } from './view-encapsulation/emulated-encapsulation/emulated-encapsulation.component';
+import { NoEncapsulationComponent } from './view-encapsulation/no-encapsulation/no-encapsulation.component';
+import { ShadowDomEncapsulationComponent } from './view-encapsulation/shadow-dom-encapsulation/shadow-dom-encapsulation.component';
 import { ComponentCommunicationComponent } from './component-communication/component-communication.component';
 import { AstronautComponent } from './component-communication/astronaut/astronaut.component';
 import {
@@ -60,14 +60,14 @@ import { VersionChildComponent } from './component-communication/version-child/v
 import { VersionParentComponent } from './component-communication/version-parent/version-parent.component';
 import { VoterComponent } from './component-communication/voter/voter.component';
 import { VotetakerComponent } from './component-communication/votetaker/votetaker.component';
-import { ComponentstyleComponent } from './componentstyle/componentstyle.component';
-import { SharingdataComponent } from './sharingdata/sharingdata.component';
-import { AliasingComponent } from './sharingdata/aliasing/aliasing.component';
-import { InTheMetadataComponent } from './sharingdata/in-the-metadata/in-the-metadata.component';
-import { InputOutputComponent } from './sharingdata/input-output/input-output.component';
-import { ItemDetailComponent } from './sharingdata/item-detail/item-detail.component';
-import { ItemDetailMetadataComponent } from './sharingdata/item-detail-metadata/item-detail-metadata.component';
-import { ItemOutputComponent } from './sharingdata/item-output/item-output.component';
+import { ComponentstyleComponent } from './component-style/componentstyle.component';
+import { SharingdataComponent } from './sharing-data/sharingdata.component';
+import { AliasingComponent } from './sharing-data/aliasing/aliasing.component';
+import { InTheMetadataComponent } from './sharing-data/in-the-metadata/in-the-metadata.component';
+import { InputOutputComponent } from './sharing-data/input-output/input-output.component';
+import { ItemDetailComponent } from './sharing-data/item-detail/item-detail.component';
+import { ItemDetailMetadataComponent } from './sharing-data/item-detail-metadata/item-detail-metadata.component';
+import { ItemOutputComponent } from './sharing-data/item-output/item-output.component';
 
 @NgModule({
   declarations: [
