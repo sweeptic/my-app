@@ -1,1 +1,5 @@
-<p>name-parent works!</p>
+<div class="container" style="background-color: lightpink">
+  <h2>Master controls {{ names.length }} names</h2>
+
+  <app-name-child *ngFor="let name of names" [name]="name"></app-name-child>
+</div>
