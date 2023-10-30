@@ -4,6 +4,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
   selector: 'app-no-encapsulation',
   templateUrl: './no-encapsulation.component.html',
   styles: ['h2, .none-message { color: red; }'],
-  encapsulation: ViewEncapsulation.None,
+  //   encapsulation: ViewEncapsulation.None,
 })
 export class NoEncapsulationComponent {}

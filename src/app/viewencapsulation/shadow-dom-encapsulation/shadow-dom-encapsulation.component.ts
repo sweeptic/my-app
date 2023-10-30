@@ -4,6 +4,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
   selector: 'app-shadow-dom-encapsulation',
   templateUrl: './shadow-dom-encapsulation.component.html',
   styles: ['h2, .shadow-message { color: blue; }'],
-  encapsulation: ViewEncapsulation.ShadowDom,
+  //   encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class ShadowDomEncapsulationComponent {}

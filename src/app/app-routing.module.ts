@@ -8,6 +8,7 @@ import { SubjectComponent } from './subject/subject.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
 import { LifecyclehooksComponent } from './lifecyclehooks/lifecyclehooks.component';
 import { ViewencapsulationComponent } from './viewencapsulation/viewencapsulation.component';
+import { ComponentCommunicationComponent } from './component-communication/component-communication.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponentComponent },
@@ -38,6 +39,10 @@ const appRoutes: Routes = [
   {
     path: 'viewencapsulation',
     component: ViewencapsulationComponent,
+  },
+  {
+    path: 'componentcommunication',
+    component: ComponentCommunicationComponent,
   },
 ];
 

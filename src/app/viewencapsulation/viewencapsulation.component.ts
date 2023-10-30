@@ -18,6 +18,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
     'app-emulated-encapsulation { border: solid 2px green; }',
     'app-shadow-dom-encapsulation { border: solid 2px blue; }',
   ],
-  encapsulation: ViewEncapsulation.None,
+  //   encapsulation: ViewEncapsulation.None,
 })
 export class ViewencapsulationComponent {}

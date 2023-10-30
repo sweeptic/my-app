@@ -44,6 +44,19 @@ import { ViewencapsulationComponent } from './viewencapsulation/viewencapsulatio
 import { EmulatedEncapsulationComponent } from './viewencapsulation/emulated-encapsulation/emulated-encapsulation.component';
 import { NoEncapsulationComponent } from './viewencapsulation/no-encapsulation/no-encapsulation.component';
 import { ShadowDomEncapsulationComponent } from './viewencapsulation/shadow-dom-encapsulation/shadow-dom-encapsulation.component';
+import { ComponentCommunicationComponent } from './component-communication/component-communication.component';
+import { AstronautComponent } from './component-communication/astronaut/astronaut.component';
+import { CountdownParentComponent } from './component-communication/countdown-parent/countdown-parent.component';
+import { CountdownTimerComponent } from './component-communication/countdown-timer/countdown-timer.component';
+import { HeroChildComponent } from './component-communication/hero-child/hero-child.component';
+import { HeroParentComponent } from './component-communication/hero-parent/hero-parent.component';
+import { MissioncontrolComponent } from './component-communication/missioncontrol/missioncontrol.component';
+import { NameChildComponent } from './component-communication/name-child/name-child.component';
+import { NameParentComponent } from './component-communication/name-parent/name-parent.component';
+import { VersionChildComponent } from './component-communication/version-child/version-child.component';
+import { VersionParentComponent } from './component-communication/version-parent/version-parent.component';
+import { VoterComponent } from './component-communication/voter/voter.component';
+import { VotetakerComponent } from './component-communication/votetaker/votetaker.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +98,19 @@ import { ShadowDomEncapsulationComponent } from './viewencapsulation/shadow-dom-
     EmulatedEncapsulationComponent,
     NoEncapsulationComponent,
     ShadowDomEncapsulationComponent,
+    ComponentCommunicationComponent,
+    AstronautComponent,
+    CountdownParentComponent,
+    CountdownTimerComponent,
+    HeroChildComponent,
+    HeroParentComponent,
+    MissioncontrolComponent,
+    NameChildComponent,
+    NameParentComponent,
+    VersionChildComponent,
+    VersionParentComponent,
+    VoterComponent,
+    VotetakerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CounterService],
