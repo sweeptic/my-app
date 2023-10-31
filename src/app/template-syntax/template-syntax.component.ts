@@ -25,7 +25,7 @@ export class TemplateSyntaxComponent {
   //   actionName = 'Go for it';
   //   badCurly = 'bad curly';
   //   classes = 'special';
-  //   help = '';
+  help = '';
 
   alert(msg?: string) {
     window.alert(msg);
@@ -52,7 +52,7 @@ export class TemplateSyntaxComponent {
   //     this.heroIdIncrement = 1;
   //   }
 
-  //   clicked = '';
+  clicked = '';
   //   clickMessage = '';
   //   clickMessage2 = '';
 
@@ -82,7 +82,7 @@ export class TemplateSyntaxComponent {
     return 2;
   }
 
-  //   name: string = Hero.heroes[0].name || '';
+  name: string = Hero.heroes[0].name || '';
   hero!: Hero; // defined to demonstrate template context precedence
   heroes: Hero[] = [];
 

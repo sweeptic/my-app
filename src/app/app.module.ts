@@ -92,9 +92,12 @@ import { AdDirective } from './dynamic-component/ad.directive';
 import { AngularelementsComponent } from './angular-elements/angularelements/angularelements.component';
 import { PopupComponent } from './angular-elements/popup/popup.component';
 import { TemplateSyntaxComponent } from './template-syntax/template-syntax.component';
+import { HeroDetailComponent } from './template-syntax/hero-detail.component';
+import { ClickDirective } from './template-syntax/click.directive';
 
 @NgModule({
   declarations: [
+    HeroDetailComponent,
     AppComponent,
     ServerComponent,
     HighlightDirective,
@@ -175,6 +178,8 @@ import { TemplateSyntaxComponent } from './template-syntax/template-syntax.compo
     AngularelementsComponent,
     PopupComponent,
     TemplateSyntaxComponent,
+    HeroDetailsComponent,
+    ClickDirective,
   ],
   imports: [
     BrowserModule,
