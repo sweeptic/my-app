@@ -83,6 +83,11 @@ import {
   ZippyContentDirective,
   ZippyToggleDirective,
 } from './content-projection/example-zippy.component';
+import { DynamicComponentComponent } from './dynamic-component/dynamic-component.component';
+import { HeroProfileComponent } from './dynamic-component/ad-items/hero-profile/hero-profile.component';
+import { HeroJobAdComponent } from './dynamic-component/ad-items/hero-job-ad/hero-job-ad.component';
+import { AdBannerComponent } from './dynamic-component/ad-banner/ad-banner.component';
+import { AdDirective } from './dynamic-component/ad.directive';
 
 @NgModule({
   declarations: [
@@ -158,6 +163,11 @@ import {
     ExampleZippy,
     ZippyToggleDirective,
     ZippyContentDirective,
+    AdDirective,
+    DynamicComponentComponent,
+    HeroProfileComponent,
+    HeroJobAdComponent,
+    AdBannerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CounterService],
