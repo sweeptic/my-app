@@ -12,6 +12,7 @@ import { ComponentCommunicationComponent } from './component-communication/compo
 
 import { SharingdataComponent } from './sharing-data/sharingdata.component';
 import { HeroAppComponent } from './component-style/hero-app.component';
+import { ContentProjectionComponent } from './content-projection/content-projection.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponentComponent },
@@ -54,6 +55,10 @@ const appRoutes: Routes = [
   {
     path: 'sharingdata',
     component: SharingdataComponent,
+  },
+  {
+    path: 'contentprojection',
+    component: ContentProjectionComponent,
   },
 ];
 

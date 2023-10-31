@@ -74,6 +74,15 @@ import { QuestSummaryComponent } from './component-style/quest-summary/quest-sum
 import { HeroDetailsComponent } from './component-style/hero-details/hero-details.component';
 import { HeroTeamComponent } from './component-style/hero-team/hero-team.component';
 import { HeroControlsComponent } from './component-style/hero-controls/hero-controls.component';
+import { ContentProjectionComponent } from './content-projection/content-projection.component';
+import { ZippyBasicComponent } from './content-projection/zippy-basic/zippy-basic.component';
+import { ZippyMultislotComponent } from './content-projection/zippy-multislot/zippy-multislot.component';
+import { ZippyNgprojectasComponent } from './content-projection/zippy-ngprojectas/zippy-ngprojectas.component';
+import {
+  ExampleZippy,
+  ZippyContentDirective,
+  ZippyToggleDirective,
+} from './content-projection/example-zippy.component';
 
 @NgModule({
   declarations: [
@@ -142,6 +151,13 @@ import { HeroControlsComponent } from './component-style/hero-controls/hero-cont
     HeroDetailsComponent,
     HeroTeamComponent,
     HeroControlsComponent,
+    ContentProjectionComponent,
+    ZippyBasicComponent,
+    ZippyMultislotComponent,
+    ZippyNgprojectasComponent,
+    ExampleZippy,
+    ZippyToggleDirective,
+    ZippyContentDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CounterService],
