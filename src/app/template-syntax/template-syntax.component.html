@@ -1,8 +1,8 @@
 <div class="container p-3" style="background-color: lightblue">
   <h1 id="toc">Template Syntax</h1>
   <a href="#interpolation">Interpolation</a><br />
-  <!-- <a href="#expression-context">Expression context</a><br /> -->
-  <!-- <a href="#statement-context">Statement context</a><br /> -->
+  <a href="#expression-context">Expression context</a><br />
+  <a href="#statement-context">Statement context</a><br />
   <!-- <a href="#mental-model">Mental Model</a><br /> -->
   <!-- <a href="#buttons">Buttons</a><br /> -->
   <!-- <a href="#prop-vs-attrib">Properties vs. Attributes</a><br /> -->
@@ -91,30 +91,43 @@
   <a class="to-toc" href="#toc">top</a>
 </div>
 
-<!-- <hr><h2 id="statement-context">Statement context</h2>
+<hr />
+<div class="p-3" style="background-color: lightgoldenrodyellow">
+  <h2 id="statement-context">Statement context</h2>
 
-<p>Component statement context ( (click)="onSave() )
-<div class="context">
-  <button type="button" (click)="deleteHero()">Delete hero</button>
+  <p>Component statement context (click) ="onSave()"</p>
+  <div class="context">
+    <button class="btn btn-primary mb-3" type="button" (click)="deleteHero()">
+      Delete hero
+    </button>
+  </div>
+
+  <p>Template $event statement context</p>
+  <div class="context">
+    <button class="btn btn-primary mb-3" type="button" (click)="onSave($event)">
+      Save
+    </button>
+  </div>
+
+  <p>Template input variable statement context (let hero)</p>
+  <!-- template hides the following; plenty of examples later -->
+  <div class="context">
+    <button
+      type="button"
+      *ngFor="let hero of heroes"
+      (click)="deleteHero(hero)"
+    >
+      {{ hero.name }}
+    </button>
+  </div>
+
+  <p>Template reference variable statement context (#heroForm)</p>
+  <div class="context">
+    <form #heroForm (ngSubmit)="onSubmit(heroForm)">...</form>
+  </div>
+
+  <a class="to-toc" href="#toc">top</a>
 </div>
-
-<p>Template $event statement context</p>
-<div class="context">
-  <button type="button" (click)="onSave($event)">Save</button>
-</div> -->
-
-<!-- <p>Template input variable statement context (let hero)</p> -->
-<!-- template hides the following; plenty of examples later -->
-<!-- <div class="context">
-  <button type="button" *ngFor="let hero of heroes" (click)="deleteHero(hero)">{{hero.name}}</button>
-</div>
-
-<p>Template reference variable statement context (#heroForm)</p>
-<div class="context">
-  <form #heroForm (ngSubmit)="onSubmit(heroForm)"> ... </form>
-</div>
-
-<a class="to-toc" href="#toc">top</a> -->
 
 <!-- New Mental Model -->
 <!-- <hr><h2 id="mental-model">New Mental Model</h2> -->

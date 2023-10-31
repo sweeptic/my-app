@@ -27,9 +27,9 @@ export class TemplateSyntaxComponent {
   //   classes = 'special';
   //   help = '';
 
-  //   alert(msg?: string) {
-  //     window.alert(msg);
-  //   }
+  alert(msg?: string) {
+    window.alert(msg);
+  }
   //   callFax(value: string) {
   //     this.alert(`Faxing ${value} ...`);
   //   }
@@ -68,9 +68,9 @@ export class TemplateSyntaxComponent {
   //     this.currentHero.name = (event.target as any).value;
   //   }
 
-  //   deleteHero(hero?: Hero) {
-  //     this.alert(`Delete ${hero ? hero.name : 'the hero'}.`);
-  //   }
+  deleteHero(hero?: Hero) {
+    this.alert(`Delete ${hero ? hero.name : 'the hero'}.`);
+  }
 
   //   evilTitle = 'Template <script>alert("evil never sleeps")</script>Syntax';
 
@@ -117,19 +117,19 @@ export class TemplateSyntaxComponent {
   //     this.alert('Click me.' + evtMsg);
   //   }
 
-  //   onSave(event?: MouseEvent) {
-  //     const evtMsg = event
-  //       ? ' Event target is ' + (event.target as HTMLElement).textContent
-  //       : '';
-  //     this.alert('Saved.' + evtMsg);
-  //     if (event) {
-  //       event.stopPropagation();
-  //     }
-  //   }
+  onSave(event?: MouseEvent) {
+    const evtMsg = event
+      ? ' Event target is ' + (event.target as HTMLElement).textContent
+      : '';
+    this.alert('Saved.' + evtMsg);
+    if (event) {
+      event.stopPropagation();
+    }
+  }
 
-  //   onSubmit(data: any) {
-  //     /* referenced but not used */
-  //   }
+  onSubmit(data: any) {
+    /* referenced but not used */
+  }
 
   //   product = {
   //     name: 'frimfram',
