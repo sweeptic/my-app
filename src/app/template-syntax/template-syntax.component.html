@@ -44,27 +44,29 @@
 </div>
 
 <!-- Interpolation and expressions -->
-<!-- <hr><h2 id="interpolation">Interpolation</h2>
+<hr />
+<div class="p-3" style="background-color: lightcoral">
+  <h2 id="interpolation">Interpolation</h2>
 
-<p>My current hero is {{currentHero.name}}</p>
+  <p>My current hero is {{ currentHero.name }}</p>
+  <h3>
+    {{ title }}
+    <img alt="{{ hero.name }}" src="{{ heroImageUrl }}" style="height: 30px" />
+  </h3>
 
-<h3>
-  {{title}}
-  <img alt="{{hero.name}}" src="{{heroImageUrl}}" style="height:30px">
-</h3> -->
+  "The sum of 1 + 1 is 2"
+  <p>The sum of 1 + 1 is {{ 1 + 1 }}</p>
 
-<!-- "The sum of 1 + 1 is 2" -->
-<!-- <p>The sum of 1 + 1 is {{1 + 1}}</p> -->
+  "The sum of 1 + 1 is not 4"
+  <p>The sum of 1 + 1 is not {{ 1 + 1 + getVal() }}</p>
+</div>
 
-<!-- "The sum of 1 + 1 is not 4" -->
-<!-- <p>The sum of 1 + 1 is not {{1 + 1 + getVal()}}</p>
+<!-- <a class="to-toc" href="#toc">top</a> -->
 
-<a class="to-toc" href="#toc">top</a>
+<!-- <hr><h2 id="expression-context">Expression context</h2> -->
 
-<hr><h2 id="expression-context">Expression context</h2>
-
-<p>Component expression context (&#123;&#123;title&#125;&#125;, [hidden]="isUnchanged")</p>
-<div class="context">
+<!-- <p>Component expression context (&#123;&#123;title&#125;&#125;, [hidden]="isUnchanged")</p> -->
+<!-- <div class="context">
   {{title}}
   <span [hidden]="isUnchanged">changed</span>
 </div> -->
