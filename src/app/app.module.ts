@@ -88,6 +88,7 @@ import { HeroProfileComponent } from './dynamic-component/ad-items/hero-profile/
 import { HeroJobAdComponent } from './dynamic-component/ad-items/hero-job-ad/hero-job-ad.component';
 import { AdBannerComponent } from './dynamic-component/ad-banner/ad-banner.component';
 import { AdDirective } from './dynamic-component/ad.directive';
+import { AngularelementsComponent } from './angular-elements/angularelements/angularelements.component';
 
 @NgModule({
   declarations: [
@@ -168,6 +169,7 @@ import { AdDirective } from './dynamic-component/ad.directive';
     HeroProfileComponent,
     HeroJobAdComponent,
     AdBannerComponent,
+    AngularelementsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CounterService],
