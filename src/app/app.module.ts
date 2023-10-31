@@ -91,6 +91,7 @@ import { AdBannerComponent } from './dynamic-component/ad-banner/ad-banner.compo
 import { AdDirective } from './dynamic-component/ad.directive';
 import { AngularelementsComponent } from './angular-elements/angularelements/angularelements.component';
 import { PopupComponent } from './angular-elements/popup/popup.component';
+import { TemplateSyntaxComponent } from './template-syntax/template-syntax.component';
 
 @NgModule({
   declarations: [
@@ -173,6 +174,7 @@ import { PopupComponent } from './angular-elements/popup/popup.component';
     AdBannerComponent,
     AngularelementsComponent,
     PopupComponent,
+    TemplateSyntaxComponent,
   ],
   imports: [
     BrowserModule,
