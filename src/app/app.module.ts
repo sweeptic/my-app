@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -89,6 +90,7 @@ import { HeroJobAdComponent } from './dynamic-component/ad-items/hero-job-ad/her
 import { AdBannerComponent } from './dynamic-component/ad-banner/ad-banner.component';
 import { AdDirective } from './dynamic-component/ad.directive';
 import { AngularelementsComponent } from './angular-elements/angularelements/angularelements.component';
+import { PopupComponent } from './angular-elements/popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -170,8 +172,15 @@ import { AngularelementsComponent } from './angular-elements/angularelements/ang
     HeroJobAdComponent,
     AdBannerComponent,
     AngularelementsComponent,
+    PopupComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+  ],
   providers: [CounterService],
   bootstrap: [AppComponent],
 })
