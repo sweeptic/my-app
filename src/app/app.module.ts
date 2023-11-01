@@ -98,6 +98,12 @@ import {
 } from './template-syntax/hero-detail.component';
 import { ClickDirective } from './template-syntax/click.directive';
 import { SizerComponent } from './template-syntax/sizer.component';
+import { HappyHeroComponent } from './template-syntax/happy-hero/happy-hero.component';
+import { SadHeroComponent } from './template-syntax/sad-hero/sad-hero.component';
+import { ConfusedHeroComponent } from './template-syntax/confused-hero/confused-hero.component';
+import { UnknownHeroComponent } from './template-syntax/unknown-hero/unknown-hero.component';
+import { HeroFormComponent } from './template-syntax/hero-form/hero-form.component';
+import { SvgComponent } from './template-syntax/svg/svg.component';
 
 @NgModule({
   declarations: [
@@ -186,6 +192,12 @@ import { SizerComponent } from './template-syntax/sizer.component';
     HeroDetailsComponent,
     ClickDirective,
     SizerComponent,
+    HappyHeroComponent,
+    SadHeroComponent,
+    ConfusedHeroComponent,
+    UnknownHeroComponent,
+    HeroFormComponent,
+    SvgComponent,
   ],
   imports: [
     BrowserModule,

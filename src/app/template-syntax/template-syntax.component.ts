@@ -1,6 +1,12 @@
 import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { Hero } from './hero';
 
+export enum Color {
+  Red,
+  Green,
+  Blue,
+}
+
 @Component({
   selector: 'app-template-syntax',
   templateUrl: './template-syntax.component.html',
@@ -30,12 +36,15 @@ export class TemplateSyntaxComponent {
   alert(msg?: string) {
     window.alert(msg);
   }
-  //   callFax(value: string) {
-  //     this.alert(`Faxing ${value} ...`);
-  //   }
-  //   callPhone(value: string) {
-  //     this.alert(`Calling ${value} ...`);
-  //   }
+
+  callFax(value: string) {
+    this.alert(`Faxing ${value} ...`);
+  }
+
+  callPhone(value: string) {
+    this.alert(`Calling ${value} ...`);
+  }
+
   canSave = true;
 
   changeIds() {
@@ -54,14 +63,14 @@ export class TemplateSyntaxComponent {
 
   clicked = '';
   clickMessage = '';
-  //   clickMessage2 = '';
+  clickMessage2 = '';
   clickMessage3 = 'click 3';
 
-  //   Color = Color;
-  //   color = Color.Red;
-  //   colorToggle() {
-  //     this.color = this.color === Color.Red ? Color.Blue : Color.Red;
-  //   }
+  Color = Color;
+  color = Color.Red;
+  colorToggle() {
+    this.color = this.color === Color.Red ? Color.Blue : Color.Red;
+  }
 
   currentHero!: Hero;
 
@@ -134,10 +143,10 @@ export class TemplateSyntaxComponent {
     /* referenced but not used */
   }
 
-  //   product = {
-  //     name: 'frimfram',
-  //     price: 42,
-  //   };
+  product = {
+    name: 'frimfram',
+    price: 42,
+  };
 
   //   // updates with fresh set of cloned heroes
   resetHeroes() {

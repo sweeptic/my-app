@@ -30,17 +30,17 @@
     </div>
     <a href="#ngSwitch">NgSwitch</a><br />
   </div>
-  <!-- <br /> -->
-  <!-- <a href="#ref-vars">Template reference variables</a><br /> -->
-  <!-- <a href="#inputs-and-outputs">Inputs and outputs</a><br /> -->
-  <!-- <a href="#pipes">Pipes</a><br /> -->
-  <!-- <a href="#safe-navigation-operator">Safe navigation operator <em>?.</em></a -->
-  <!-- ><br /> -->
-  <!-- <a href="#non-null-assertion-operator"
+  <br />
+  <a href="#ref-vars">Template reference variables</a><br />
+  <a href="#inputs-and-outputs">Inputs and outputs</a><br />
+  <a href="#pipes">Pipes</a><br />
+  <a href="#safe-navigation-operator">Safe navigation operator <em>?.</em></a
+  ><br />
+  <a href="#non-null-assertion-operator"
     >Non-null assertion operator <em>!.</em></a
-  ><br /> -->
-  <!-- <a href="#enums">Enums</a><br /> -->
-  <!-- <a href="#svg-templates">SVG Templates</a><br /> -->
+  ><br />
+  <a href="#enums">Enums</a><br />
+  <a href="#svg-templates">SVG Templates</a><br />
 </div>
 
 <!-- Interpolation and expressions -->
@@ -863,159 +863,210 @@
 <div class="p-3" style="background-color: lightpink">
   <h2 id="ngSwitch">NgSwitch Binding</h2>
 
-  <!-- <p>Pick your favorite hero</p>
-<div>
-  <label for="hero-{{h}}" *ngFor="let h of heroes">
-    <input id="hero-{{h}}" type="radio" name="heroes" [(ngModel)]="currentHero" [value]="h">{{h.name}}
-  </label>
-</div>
+  <p>Pick your favorite hero</p>
+  <div>
+    <label for="hero-{{ h }}" *ngFor="let h of heroes">
+      <input
+        id="hero-{{ h }}"
+        type="radio"
+        name="heroes"
+        [(ngModel)]="currentHero"
+        [value]="h"
+      />{{ h.name }}
+    </label>
+  </div>
 
-<div [ngSwitch]="currentHero.emotion">
-  <app-happy-hero    *ngSwitchCase="'happy'"    [hero]="currentHero"></app-happy-hero>
-  <app-sad-hero      *ngSwitchCase="'sad'"      [hero]="currentHero"></app-sad-hero>
-  <app-confused-hero *ngSwitchCase="'confused'" [hero]="currentHero"></app-confused-hero>
-  <div *ngSwitchCase="'confused'">Are you as confused as {{currentHero.name}}?</div>
-  <app-unknown-hero  *ngSwitchDefault           [hero]="currentHero"></app-unknown-hero>
-</div> -->
+  <div [ngSwitch]="currentHero.emotion">
+    <app-happy-hero
+      *ngSwitchCase="'happy'"
+      [hero]="currentHero"
+    ></app-happy-hero>
+    <app-sad-hero *ngSwitchCase="'sad'" [hero]="currentHero"></app-sad-hero>
+    <app-confused-hero
+      *ngSwitchCase="'confused'"
+      [hero]="currentHero"
+    ></app-confused-hero>
+    <div *ngSwitchCase="'confused'">
+      Are you as confused as {{ currentHero.name }}?
+    </div>
+    <app-unknown-hero *ngSwitchDefault [hero]="currentHero"></app-unknown-hero>
+  </div>
 
   <a class="to-toc" href="#toc">top</a>
 </div>
 <!-- template reference variable -->
-<!-- <hr><h2 id="ref-vars">Template reference variables</h2>
 
-<input #phone placeholder="phone number"> -->
+<hr />
+<div class="p-3" style="background-color: lightblue">
+  <h2 id="ref-vars">Template reference variables</h2>
 
-<!-- lots of other elements -->
+  <input #phone placeholder="phone number" />
 
-<!-- phone refers to the input element; pass its `value` to an event handler -->
-<!-- <button type="button" class="btn btn-primary mb-3" (click)="callPhone(phone.value)">Call</button> -->
+  <!-- lots of other elements -->
 
-<!-- btn refers to the button element; show its disabled state -->
-<!-- <button type="button" class="btn btn-primary mb-3" #btn disabled [innerHTML]="'disabled by attribute: '+btn.disabled"></button>
+  <!-- phone refers to the input element; pass its `value` to an event handler -->
+  <button
+    type="button"
+    class="btn btn-primary mb-3"
+    (click)="callPhone(phone.value)"
+  >
+    Call
+  </button>
 
-<h4>Example Form</h4>
-<app-hero-form [hero]="currentHero"></app-hero-form>
+  <!-- btn refers to the button element; show its disabled state -->
+  <button
+    type="button"
+    class="btn btn-primary mb-3"
+    #btn
+    disabled
+    [innerHTML]="'disabled by attribute: ' + btn.disabled"
+  ></button>
 
-<a class="to-toc" href="#toc">top</a> -->
+  <h4>Example Form</h4>
+  <app-hero-form [hero]="currentHero"></app-hero-form>
 
-<!-- inputs and output -->
-<!-- <hr><h2 id="inputs-and-outputs">Inputs and Outputs</h2>
-
-<img alt="icon" [src]="iconUrl"/>
-<button type="button" class="btn btn-primary mb-3" (click)="onSave()">Save</button>
-
-<app-hero-detail [hero]="currentHero" (deleteRequest)="deleteHero($event)">
-</app-hero-detail>
-
-<div (myClick)="clickMessage2=$event" clickable>myClick2</div>
-{{clickMessage2}}
-
-<a class="to-toc" href="#toc">top</a> -->
-
-<!-- Pipes -->
-<!-- <hr><h2 id="pipes">Pipes</h2>
-
-<div>Title through uppercase pipe: {{title | uppercase}}</div> -->
-
-<!-- Pipe chaining: convert title to uppercase, then to lowercase -->
-<!-- <div>
-  Title through a pipe chain:
-  {{title | uppercase | lowercase}}
-</div> -->
-
-<!-- pipe with configuration argument => "February 25, 1970" -->
-<!-- <div>Birthdate: {{currentHero?.birthdate | date:'longDate'}}</div>
-
-<div>{{currentHero | json}}</div>
-
-<div>Birthdate: {{(currentHero?.birthdate | date:'longDate') | uppercase}}</div> -->
-
-<!-- <div> -->
-<!-- pipe price to USD and display the $ symbol -->
-<!-- <span>Price: </span>{{product.price | currency:'USD':'symbol'}}
+  <a class="to-toc" href="#toc">top</a>
 </div>
+<hr />
 
-<a class="to-toc" href="#toc">top</a> -->
+<div class="p-3" style="background-color: lightgreen">
+  <!-- inputs and output -->
+  <h2 id="inputs-and-outputs">Inputs and Outputs</h2>
 
-<!-- Null values and the safe navigation operator -->
-<!-- <hr><h2 id="safe-navigation-operator">Safe navigation operator <em>?.</em></h2>
+  <img alt="icon" [src]="iconUrl" />
 
-<div>
-  The title is {{title}}
+  <button type="button" class="btn btn-primary mb-3 ml-3" (click)="onSave()">
+    Save
+  </button>
+
+  <app-hero-detail [hero]="currentHero" (deleteRequest)="deleteHero($event)">
+  </app-hero-detail>
+
+  <div (myClick)="clickMessage2 = $event" clickable>myClick2</div>
+  {{ clickMessage2 }}
+
+  <a class="to-toc" href="#toc">top</a>
 </div>
+<hr />
 
-<div>
-  The current hero's name is {{currentHero?.name}}
-</div>
+<div class="p-3" style="background-color: lightsalmon">
+  <!-- Pipes -->
+  <h2 id="pipes">Pipes</h2>
 
-<div>
-  The current hero's name is {{currentHero.name}}
-</div> -->
+  <div>Title through uppercase pipe: {{ title | uppercase }}</div>
 
-<!--
-The null hero's name is {{nullHero.name}}
-
-See console log:
-  TypeError: Cannot read property 'name' of null in [null]
--->
-
-<!--No hero, div not displayed, no error -->
-<!-- <div *ngIf="nullHero">The null hero's name is {{nullHero.name}}</div>
-
-<div>
-The null hero's name is {{nullHero && nullHero.name}}
-</div> -->
-
-<!-- <div> -->
-<!-- No hero, no problem! -->
-<!-- The null hero's name is {{nullHero?.name}}
-</div> -->
-
-<!-- <a class="to-toc" href="#toc">top</a> -->
-
-<!-- non-null assertion operator -->
-<!-- <hr><h2 id="non-null-assertion-operator">Non-null assertion operator <em>!.</em></h2> -->
-
-<!-- <div> -->
-<!--No hero, no text -->
-<!-- <div *ngIf="hero">
-    The hero's name is {{hero!.name}}
+  <!-- Pipe chaining: convert title to uppercase, then to lowercase -->
+  <div>
+    Title through a pipe chain:
+    {{ title | uppercase | lowercase }}
   </div>
-</div> -->
 
-<a class="to-toc" href="#toc">top</a>
+  <!-- pipe with configuration argument => "February 25, 1970" -->
+  <div>Birthdate: {{ currentHero.birthdate | date : "longDate" }}</div>
 
-<!-- non-null assertion operator -->
-<!-- <hr><h2 id="any-type-cast-function">$any type cast function <em>$any( )</em>.</h2>
+  <div>{{ currentHero | json }}</div>
 
-<div> -->
-<!-- Accessing an undeclared member -->
-<!-- <div>
-    The hero's marker is {{$any(hero).marker}}
+  <div>
+    Birthdate: {{ currentHero.birthdate | date : "longDate" | uppercase }}
+  </div>
+
+  <!-- pipe price to USD and display the $ symbol -->
+  <span>Price: </span>{{ product.price | currency : "USD" : "symbol" }}
+  <a class="to-toc" href="#toc">top</a>
+</div>
+
+<hr />
+<div>
+  <div class="p-3" style="background-color: lightseagreen">
+    <!-- Null values and the safe navigation operator -->
+    <h2 id="safe-navigation-operator">Safe navigation operator <em>?.</em></h2>
+
+    <div>The title is {{ title }}</div>
+
+    <!-- <div>The current hero's name is {{ currentHero?.name }}</div> -->
+
+    <div>The current hero's name is {{ currentHero.name }}</div>
+
+    <!-- The null hero's name is {{ nullHero.name }}
+    See console log: TypeError: Cannot read property 'name' of null in [null] -->
+
+    <!--No hero, div not displayed, no error -->
+    <div *ngIf="nullHero">The null hero's name is {{ nullHero.name }}</div>
+
+    <div>The null hero's name is {{ nullHero && nullHero.name }}</div>
+
+    <div>
+      <!-- No hero, no problem! -->
+      The null hero's name is {{ nullHero?.name }}
+    </div>
+
+    <a class="to-toc" href="#toc">top</a>
+  </div>
+  <hr />
+  <div class="p-3" style="background-color: lightskyblue">
+    <!-- non-null assertion operator -->
+    <h2 id="non-null-assertion-operator">
+      Non-null assertion operator <em>!.</em>
+    </h2>
+
+    <!--No hero, no text -->
+    <div *ngIf="hero">The hero's name is {{ hero!.name }}</div>
+
+    <a class="to-toc" href="#toc">top</a>
+  </div>
+  <hr />
+  <div class="p-3" style="background-color: lightpink">
+    <!-- non-null assertion operator -->
+    <h2 id="any-type-cast-function">
+      $any type cast function <em>$any( )</em>.
+    </h2>
+
+    <div>
+      <!-- Accessing an undeclared member -->
+      <div>The hero's marker is {{ $any(hero).marker }}</div>
+    </div>
+
+    <div>
+      <!-- Accessing an undeclared member -->
+      <div>Undeclared members is {{ $any(this).member }}</div>
+    </div>
+
+    <a class="to-toc" href="#toc">top</a>
+  </div>
+
+  <hr />
+  <div class="p-3" style="background-color: lightslategray">
+    <!-- TODO: discuss this in the Style binding section -->
+    <!-- enums in bindings -->
+    <h2 id="enums">Enums in binding</h2>
+
+    <p>
+      The name of the Color.Red enum is {{ Color[Color.Red] }}.<br />
+      The current color is {{ Color[color] }} and its number is
+      {{ color }}.<br />
+      <button
+        type="button"
+        class="btn btn-primary mb-3 mt-3"
+        [style.color]="Color[color]"
+        (click)="colorToggle()"
+      >
+        Enum Toggle
+      </button>
+    </p>
+
+    <a class="to-toc" href="#toc">top</a>
+  </div>
+  <hr />
+  <div class="p-3" style="background-color: lightcoral">
+    <h2 id="svg-templates">SVG Templates</h2>
+    <app-svg></app-svg>
+    <a class="to-toc" href="#toc">top</a>
   </div>
 </div>
 
-<div> -->
-<!-- Accessing an undeclared member -->
-<!-- <div>
-    Undeclared members is {{$any(this).member}}
-  </div>
-</div>
-
-<a class="to-toc" href="#toc">top</a> -->
-
-<!-- TODO: discuss this in the Style binding section -->
-<!-- enums in bindings -->
-<!-- <hr><h2 id="enums">Enums in binding</h2>
-
-<p>
-  The name of the Color.Red enum is {{Color[Color.Red]}}.<br>
-  The current color is {{Color[color]}} and its number is {{color}}.<br>
-  <button type="button" class="btn btn-primary mb-3" [style.color]="Color[color]" (click)="colorToggle()">Enum Toggle</button>
-</p>
-
-<a class="to-toc" href="#toc">top</a> -->
-
-<!-- <hr><h2 id="svg-templates">SVG Templates</h2>
-<app-svg></app-svg>
-<a class="to-toc" href="#toc">top</a> -->
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
