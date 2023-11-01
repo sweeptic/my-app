@@ -12,11 +12,13 @@ import { Hero } from './hero';
     <span [style.text-decoration]="lineThrough">
       {{ prefix }} {{ hero.name }}
     </span>
-    <button type="button" (click)="delete()">Delete</button>
+    <button class="btn btn-primary" type="button" (click)="delete()">
+      Delete
+    </button>
   </div>`,
 })
 export class HeroDetailComponent {
-  hero = new Hero(-1, '', 'Zzzzzzzz'); // default sleeping hero
+  hero = new Hero(-1, 'default...zzz', 'Zzzzzzzz'); // default sleeping hero
   // heroImageUrl = 'https://wpclipart.com/cartoon/people/hero/hero_silhoutte.png.html';
   // Public Domain terms of use: https://wpclipart.com/terms.html
   heroImageUrl = 'assets/images/hero.svg';

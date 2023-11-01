@@ -92,12 +92,17 @@ import { AdDirective } from './dynamic-component/ad.directive';
 import { AngularelementsComponent } from './angular-elements/angularelements/angularelements.component';
 import { PopupComponent } from './angular-elements/popup/popup.component';
 import { TemplateSyntaxComponent } from './template-syntax/template-syntax.component';
-import { HeroDetailComponent } from './template-syntax/hero-detail.component';
+import {
+  BigHeroDetailComponent,
+  HeroDetailComponent,
+} from './template-syntax/hero-detail.component';
 import { ClickDirective } from './template-syntax/click.directive';
+import { SizerComponent } from './template-syntax/sizer.component';
 
 @NgModule({
   declarations: [
     HeroDetailComponent,
+    BigHeroDetailComponent,
     AppComponent,
     ServerComponent,
     HighlightDirective,
@@ -180,6 +185,7 @@ import { ClickDirective } from './template-syntax/click.directive';
     TemplateSyntaxComponent,
     HeroDetailsComponent,
     ClickDirective,
+    SizerComponent,
   ],
   imports: [
     BrowserModule,

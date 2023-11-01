@@ -11,7 +11,7 @@ export class ClickDirective {
   constructor(el: ElementRef) {
     el.nativeElement.addEventListener('click', (event: Event) => {
       this.toggle = !this.toggle;
-      this.clicks.emit(this.toggle ? 'Click!' : '');
+      this.clicks.emit(this.toggle ? 'EMIT_Click!' : '');
     });
   }
 }
