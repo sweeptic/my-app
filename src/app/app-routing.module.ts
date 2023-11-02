@@ -16,6 +16,7 @@ import { ContentProjectionComponent } from './content-projection/content-project
 import { DynamicComponentComponent } from './dynamic-component/dynamic-component.component';
 import { AngularelementsComponent } from './angular-elements/angularelements/angularelements.component';
 import { TemplateSyntaxComponent } from './template-syntax/template-syntax.component';
+import { PropertyBindingComponent } from './property-binding/property-binding.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponentComponent },
@@ -74,6 +75,10 @@ const appRoutes: Routes = [
   {
     path: 'templatesyntax',
     component: TemplateSyntaxComponent,
+  },
+  {
+    path: 'propertybinding',
+    component: PropertyBindingComponent,
   },
 ];
 
