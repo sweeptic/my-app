@@ -128,6 +128,7 @@ import { FlyingHeroesPipe } from './pipes/flying-heroes.pipe';
 import { FlyingHeroesImpurePipe } from './pipes/flying-heroes-impure.pipe';
 import { FlyingHeroesImpureComponent } from './pipes/flying-heroes-impure/flying-heroes-impure.component';
 import { FetchJsonPipe } from './pipes/fetch-json.pipe';
+import { TemplateVariablesComponent } from './template-variables/template-variables.component';
 
 @NgModule({
     declarations: [
@@ -246,6 +247,7 @@ import { FetchJsonPipe } from './pipes/fetch-json.pipe';
         FlyingHeroesImpurePipe,
         FlyingHeroesImpureComponent,
         FetchJsonPipe,
+        TemplateVariablesComponent,
     ],
     imports: [
         BrowserModule,
