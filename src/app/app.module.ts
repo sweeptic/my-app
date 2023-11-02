@@ -113,6 +113,7 @@ import { MyInputWithAttributeDecoratorComponent } from './attribute-binding/my-i
 import { SingleAndMultipleStyleBindingComponent } from './attribute-binding/single-and-multiple-style-binding/single-and-multiple-style-binding.component';
 import { EventBindingComponent } from './event-binding/event-binding.component';
 import { EventItemDetailComponent } from './event-binding/event-item-detail/event-item-detail.component';
+import { TwowayBindingComponent } from './twoway-binding/twoway-binding.component';
 
 @NgModule({
     declarations: [
@@ -216,6 +217,7 @@ import { EventItemDetailComponent } from './event-binding/event-item-detail/even
         SingleAndMultipleStyleBindingComponent,
         EventBindingComponent,
         EventItemDetailComponent,
+        TwowayBindingComponent,
     ],
     imports: [
         BrowserModule,

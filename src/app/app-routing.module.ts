@@ -19,6 +19,7 @@ import { TemplateSyntaxComponent } from './template-syntax/template-syntax.compo
 import { PropertyBindingComponent } from './property-binding/property-binding.component';
 import { AttributeBindingComponent } from './attribute-binding/attribute-binding.component';
 import { EventBindingComponent } from './event-binding/event-binding.component';
+import { TwowayBindingComponent } from './twoway-binding/twoway-binding.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponentComponent },
@@ -89,6 +90,10 @@ const appRoutes: Routes = [
     {
         path: 'eventbinding',
         component: EventBindingComponent,
+    },
+    {
+        path: 'twowaybinding',
+        component: TwowayBindingComponent,
     },
 ];
 
