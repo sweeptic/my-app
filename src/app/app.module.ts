@@ -111,6 +111,8 @@ import { AttributeBindingComponent } from './attribute-binding/attribute-binding
 import { CompWithHostBindingComponent } from './attribute-binding/comp-with-host-binding/comp-with-host-binding.component';
 import { MyInputWithAttributeDecoratorComponent } from './attribute-binding/my-input-with-attribute-decorator/my-input-with-attribute-decorator.component';
 import { SingleAndMultipleStyleBindingComponent } from './attribute-binding/single-and-multiple-style-binding/single-and-multiple-style-binding.component';
+import { EventBindingComponent } from './event-binding/event-binding.component';
+import { EventItemDetailComponent } from './event-binding/event-item-detail/event-item-detail.component';
 
 @NgModule({
     declarations: [
@@ -212,6 +214,8 @@ import { SingleAndMultipleStyleBindingComponent } from './attribute-binding/sing
         CompWithHostBindingComponent,
         MyInputWithAttributeDecoratorComponent,
         SingleAndMultipleStyleBindingComponent,
+        EventBindingComponent,
+        EventItemDetailComponent,
     ],
     imports: [
         BrowserModule,

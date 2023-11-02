@@ -18,6 +18,7 @@ import { AngularelementsComponent } from './angular-elements/angularelements/ang
 import { TemplateSyntaxComponent } from './template-syntax/template-syntax.component';
 import { PropertyBindingComponent } from './property-binding/property-binding.component';
 import { AttributeBindingComponent } from './attribute-binding/attribute-binding.component';
+import { EventBindingComponent } from './event-binding/event-binding.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponentComponent },
@@ -84,6 +85,10 @@ const appRoutes: Routes = [
     {
         path: 'attributebinding',
         component: AttributeBindingComponent,
+    },
+    {
+        path: 'eventbinding',
+        component: EventBindingComponent,
     },
 ];
 
