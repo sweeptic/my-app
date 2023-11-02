@@ -107,6 +107,10 @@ import { SvgComponent } from './template-syntax/svg/svg.component';
 import { PropertyBindingComponent } from './property-binding/property-binding.component';
 import { PropItemListComponent } from './property-binding/prop-item-list/prop-item-list.component';
 import { PropItemDetailComponent } from './property-binding/prop-item-detail/prop-item-detail.component';
+import { AttributeBindingComponent } from './attribute-binding/attribute-binding.component';
+import { CompWithHostBindingComponent } from './attribute-binding/comp-with-host-binding/comp-with-host-binding.component';
+import { MyInputWithAttributeDecoratorComponent } from './attribute-binding/my-input-with-attribute-decorator/my-input-with-attribute-decorator.component';
+import { SingleAndMultipleStyleBindingComponent } from './attribute-binding/single-and-multiple-style-binding/single-and-multiple-style-binding.component';
 
 @NgModule({
     declarations: [
@@ -203,7 +207,11 @@ import { PropItemDetailComponent } from './property-binding/prop-item-detail/pro
         SvgComponent,
         PropertyBindingComponent,
         PropItemListComponent,
-        PropItemDetailComponent
+        PropItemDetailComponent,
+        AttributeBindingComponent,
+        CompWithHostBindingComponent,
+        MyInputWithAttributeDecoratorComponent,
+        SingleAndMultipleStyleBindingComponent,
     ],
     imports: [
         BrowserModule,

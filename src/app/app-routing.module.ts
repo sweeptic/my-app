@@ -17,73 +17,78 @@ import { DynamicComponentComponent } from './dynamic-component/dynamic-component
 import { AngularelementsComponent } from './angular-elements/angularelements/angularelements.component';
 import { TemplateSyntaxComponent } from './template-syntax/template-syntax.component';
 import { PropertyBindingComponent } from './property-binding/property-binding.component';
+import { AttributeBindingComponent } from './attribute-binding/attribute-binding.component';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponentComponent },
-  {
-    path: 'basics',
-    component: ServerComponent,
-  },
-  {
-    path: 'events',
-    component: EventsComponentsComponent,
-  },
-  {
-    path: 'observables',
-    component: ObservablesComponentComponent,
-  },
-  {
-    path: 'object',
-    component: SubjectComponent,
-  },
-  {
-    path: 'scheduler',
-    component: SchedulerComponent,
-  },
-  {
-    path: 'lifecyclehooks',
-    component: LifecyclehooksComponent,
-  },
-  {
-    path: 'viewencapsulation',
-    component: ViewencapsulationComponent,
-  },
-  {
-    path: 'componentcommunication',
-    component: ComponentCommunicationComponent,
-  },
-  {
-    path: 'componentstyle',
-    component: HeroAppComponent,
-  },
-  {
-    path: 'sharingdata',
-    component: SharingdataComponent,
-  },
-  {
-    path: 'contentprojection',
-    component: ContentProjectionComponent,
-  },
-  {
-    path: 'dynamiccomponent',
-    component: DynamicComponentComponent,
-  },
-  {
-    path: 'angularelements',
-    component: AngularelementsComponent,
-  },
-  {
-    path: 'templatesyntax',
-    component: TemplateSyntaxComponent,
-  },
-  {
-    path: 'propertybinding',
-    component: PropertyBindingComponent,
-  },
+    { path: '', component: HomeComponentComponent },
+    {
+        path: 'basics',
+        component: ServerComponent,
+    },
+    {
+        path: 'events',
+        component: EventsComponentsComponent,
+    },
+    {
+        path: 'observables',
+        component: ObservablesComponentComponent,
+    },
+    {
+        path: 'object',
+        component: SubjectComponent,
+    },
+    {
+        path: 'scheduler',
+        component: SchedulerComponent,
+    },
+    {
+        path: 'lifecyclehooks',
+        component: LifecyclehooksComponent,
+    },
+    {
+        path: 'viewencapsulation',
+        component: ViewencapsulationComponent,
+    },
+    {
+        path: 'componentcommunication',
+        component: ComponentCommunicationComponent,
+    },
+    {
+        path: 'componentstyle',
+        component: HeroAppComponent,
+    },
+    {
+        path: 'sharingdata',
+        component: SharingdataComponent,
+    },
+    {
+        path: 'contentprojection',
+        component: ContentProjectionComponent,
+    },
+    {
+        path: 'dynamiccomponent',
+        component: DynamicComponentComponent,
+    },
+    {
+        path: 'angularelements',
+        component: AngularelementsComponent,
+    },
+    {
+        path: 'templatesyntax',
+        component: TemplateSyntaxComponent,
+    },
+    {
+        path: 'propertybinding',
+        component: PropertyBindingComponent,
+    },
+    {
+        path: 'attributebinding',
+        component: AttributeBindingComponent,
+    },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
-  exports: [RouterModule],
+    imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
+    exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

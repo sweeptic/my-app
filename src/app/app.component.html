@@ -1,92 +1,72 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div
-      class="collapse navbar-collapse flex-column"
-      id="navbarSupportedContent"
-    >
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li
-          class="nav-item"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <a routerLink="/" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a routerLink="/basics" class="nav-link">Basics</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a routerLink="/events" class="nav-link">Events</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a routerLink="/observables" class="nav-link">RxJS Observables</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a routerLink="/object" class="nav-link">RxJS Subjects</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a routerLink="/scheduler" class="nav-link">RxJS scheduler</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a routerLink="/lifecyclehooks" class="nav-link">Lifecycle Hooks</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a routerLink="/viewencapsulation" class="nav-link"
-            >View encapsulation</a
-          >
-        </li>
-      </ul>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" routerLinkActive="active">
-          <a routerLink="/componentcommunication" class="nav-link"
-            >Component communication</a
-          >
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a routerLink="/componentstyle" class="nav-link">Component style</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a routerLink="/sharingdata" class="nav-link">Sharing data</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a routerLink="/contentprojection" class="nav-link"
-            >Content projection</a
-          >
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a routerLink="/dynamiccomponent" class="nav-link"
-            >Dynamic component</a
-          >
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a routerLink="/angularelements" class="nav-link">Angular el.</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" routerLinkActive="active">
-          <a routerLink="/templatesyntax" class="nav-link">Template syntax</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a routerLink="/propertybinding" class="nav-link">Property binding</a>
-        </li>
-      </ul>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse flex-column" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <a routerLink="/" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="/basics" class="nav-link">Basics</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="/events" class="nav-link">Events</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="/observables" class="nav-link">RxJS Observables</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="/object" class="nav-link">RxJS Subjects</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="/scheduler" class="nav-link">RxJS scheduler</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="/lifecyclehooks" class="nav-link">Lifecycle Hooks</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="/viewencapsulation" class="nav-link">View encapsulation</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="/componentcommunication" class="nav-link">Component communication</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="/componentstyle" class="nav-link">Component style</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="/sharingdata" class="nav-link">Sharing data</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="/contentprojection" class="nav-link">Content projection</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="/dynamiccomponent" class="nav-link">Dynamic component</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="/angularelements" class="nav-link">Angular el.</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="/templatesyntax" class="nav-link">Template syntax</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="/propertybinding" class="nav-link">Property binding</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="/attributebinding" class="nav-link">Attribute binding</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>
 <div class="container">
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 </div>
 <!-- add routing soon -->
 <!-- <server-component></server-component> -->
