@@ -114,6 +114,20 @@ import { SingleAndMultipleStyleBindingComponent } from './attribute-binding/sing
 import { EventBindingComponent } from './event-binding/event-binding.component';
 import { EventItemDetailComponent } from './event-binding/event-item-detail/event-item-detail.component';
 import { TwowayBindingComponent } from './twoway-binding/twoway-binding.component';
+import { PipesComponent } from './pipes/pipes.component';
+import { ExponentialStrengthPipe } from './pipes/exponential-strength.pipe';
+import { FlyingHeroesComponent } from './pipes/flying-heroes/flying-heroes.component';
+import { HeroAsyncMessageComponent } from './pipes/hero-async-message/hero-async-message.component';
+import { Herobirthday1Component } from './pipes/herobirthday1/herobirthday1.component';
+import { Herobirthday2Component } from './pipes/herobirthday2/herobirthday2.component';
+import { HeroListComponent } from './pipes/hero-list/hero-list.component';
+import { PowerBoostCalculatorComponent } from './pipes/power-boost-calculator/power-boost-calculator.component';
+import { PowerBoosterComponent } from './pipes/power-booster/power-booster.component';
+import { PrecedenceComponent } from './pipes/precedence/precedence.component';
+import { FlyingHeroesPipe } from './pipes/flying-heroes.pipe';
+import { FlyingHeroesImpurePipe } from './pipes/flying-heroes-impure.pipe';
+import { FlyingHeroesImpureComponent } from './pipes/flying-heroes-impure/flying-heroes-impure.component';
+import { FetchJsonPipe } from './pipes/fetch-json.pipe';
 
 @NgModule({
     declarations: [
@@ -218,6 +232,20 @@ import { TwowayBindingComponent } from './twoway-binding/twoway-binding.componen
         EventBindingComponent,
         EventItemDetailComponent,
         TwowayBindingComponent,
+        PipesComponent,
+        ExponentialStrengthPipe,
+        FlyingHeroesComponent,
+        HeroAsyncMessageComponent,
+        Herobirthday1Component,
+        Herobirthday2Component,
+        HeroListComponent,
+        PowerBoostCalculatorComponent,
+        PowerBoosterComponent,
+        PrecedenceComponent,
+        FlyingHeroesPipe,
+        FlyingHeroesImpurePipe,
+        FlyingHeroesImpureComponent,
+        FetchJsonPipe,
     ],
     imports: [
         BrowserModule,

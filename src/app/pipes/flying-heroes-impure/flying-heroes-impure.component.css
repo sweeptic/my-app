@@ -1,0 +1,12 @@
+#flyers,
+#all {
+    font-style: italic
+}
+
+button {
+    display: block
+}
+
+input {
+    margin: .25rem .25rem .5rem 0;
+}

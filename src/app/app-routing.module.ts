@@ -20,6 +20,7 @@ import { PropertyBindingComponent } from './property-binding/property-binding.co
 import { AttributeBindingComponent } from './attribute-binding/attribute-binding.component';
 import { EventBindingComponent } from './event-binding/event-binding.component';
 import { TwowayBindingComponent } from './twoway-binding/twoway-binding.component';
+import { PipesComponent } from './pipes/pipes.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponentComponent },
@@ -94,6 +95,10 @@ const appRoutes: Routes = [
     {
         path: 'twowaybinding',
         component: TwowayBindingComponent,
+    },
+    {
+        path: 'pipes',
+        component: PipesComponent,
     },
 ];
 
