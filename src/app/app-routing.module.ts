@@ -22,6 +22,7 @@ import { EventBindingComponent } from './event-binding/event-binding.component';
 import { TwowayBindingComponent } from './twoway-binding/twoway-binding.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { TemplateVariablesComponent } from './template-variables/template-variables.component';
+import { BuiltInDirectivesComponent } from './built-in-directives/built-in-directives.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponentComponent },
@@ -105,6 +106,14 @@ const appRoutes: Routes = [
         path: 'templatevariables',
         component: TemplateVariablesComponent,
     },
+    {
+        path: 'builtindirectives',
+        component: BuiltInDirectivesComponent,
+    },
+
+
+
+
 ];
 
 @NgModule({

@@ -129,6 +129,9 @@ import { FlyingHeroesImpurePipe } from './pipes/flying-heroes-impure.pipe';
 import { FlyingHeroesImpureComponent } from './pipes/flying-heroes-impure/flying-heroes-impure.component';
 import { FetchJsonPipe } from './pipes/fetch-json.pipe';
 import { TemplateVariablesComponent } from './template-variables/template-variables.component';
+import { BuiltInDirectivesComponent } from './built-in-directives/built-in-directives.component';
+import { ItemDetailDirectivesComponent } from './built-in-directives/item-detail-directives/item-detail-directives.component';
+import { ItemSwitchComponents } from './built-in-directives/item-switch/item-switch.component';
 
 @NgModule({
     declarations: [
@@ -248,6 +251,9 @@ import { TemplateVariablesComponent } from './template-variables/template-variab
         FlyingHeroesImpureComponent,
         FetchJsonPipe,
         TemplateVariablesComponent,
+        BuiltInDirectivesComponent,
+        ItemDetailDirectivesComponent,
+        ItemSwitchComponents
     ],
     imports: [
         BrowserModule,
