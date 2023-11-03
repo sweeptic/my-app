@@ -132,6 +132,10 @@ import { TemplateVariablesComponent } from './template-variables/template-variab
 import { BuiltInDirectivesComponent } from './built-in-directives/built-in-directives.component';
 import { ItemDetailDirectivesComponent } from './built-in-directives/item-detail-directives/item-detail-directives.component';
 import { ItemSwitchComponents } from './built-in-directives/item-switch/item-switch.component';
+import { AttributeDirectivesComponent } from './attribute-directives/attribute-directives.component';
+import { AvoidComponent } from './attribute-directives/avoid/avoid.component';
+import { Highlight0Directive } from './attribute-directives/highlight0.directive';
+import { HighlightDirectiveAttr } from './attribute-directives/highlight.directive';
 
 @NgModule({
     declarations: [
@@ -253,7 +257,11 @@ import { ItemSwitchComponents } from './built-in-directives/item-switch/item-swi
         TemplateVariablesComponent,
         BuiltInDirectivesComponent,
         ItemDetailDirectivesComponent,
-        ItemSwitchComponents
+        ItemSwitchComponents,
+        AttributeDirectivesComponent,
+        AvoidComponent,
+        Highlight0Directive,
+        HighlightDirectiveAttr
     ],
     imports: [
         BrowserModule,

@@ -23,6 +23,7 @@ import { TwowayBindingComponent } from './twoway-binding/twoway-binding.componen
 import { PipesComponent } from './pipes/pipes.component';
 import { TemplateVariablesComponent } from './template-variables/template-variables.component';
 import { BuiltInDirectivesComponent } from './built-in-directives/built-in-directives.component';
+import { AttributeDirectivesComponent } from './attribute-directives/attribute-directives.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponentComponent },
@@ -110,10 +111,10 @@ const appRoutes: Routes = [
         path: 'builtindirectives',
         component: BuiltInDirectivesComponent,
     },
-
-
-
-
+    {
+        path: 'attributedirectives',
+        component: AttributeDirectivesComponent,
+    }
 ];
 
 @NgModule({
