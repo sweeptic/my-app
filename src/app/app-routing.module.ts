@@ -24,6 +24,7 @@ import { PipesComponent } from './pipes/pipes.component';
 import { TemplateVariablesComponent } from './template-variables/template-variables.component';
 import { BuiltInDirectivesComponent } from './built-in-directives/built-in-directives.component';
 import { AttributeDirectivesComponent } from './attribute-directives/attribute-directives.component';
+import { StructuralDirectivesComponent } from './structural-directives/structural-directives.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponentComponent },
@@ -114,6 +115,10 @@ const appRoutes: Routes = [
     {
         path: 'attributedirectives',
         component: AttributeDirectivesComponent,
+    },
+    {
+        path: 'structuraldirectives',
+        component: StructuralDirectivesComponent,
     }
 ];
 

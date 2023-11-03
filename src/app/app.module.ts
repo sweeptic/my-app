@@ -136,6 +136,12 @@ import { AttributeDirectivesComponent } from './attribute-directives/attribute-d
 import { AvoidComponent } from './attribute-directives/avoid/avoid.component';
 import { Highlight0Directive } from './attribute-directives/highlight0.directive';
 import { HighlightDirectiveAttr } from './attribute-directives/highlight.directive';
+import { StructuralDirectivesComponent } from './structural-directives/structural-directives.component';
+import { HeroCompStrdirComponent } from './structural-directives/hero-comp-strdir/hero-comp-strdir.component';
+import { IfLoadedDirective } from './structural-directives/if-loaded.directive';
+import { LoadingStateDirective } from './structural-directives/loading-state.directive';
+import { TrigonometryDirective } from './structural-directives/trigonometry.directive';
+import { heroSwitchComponentsStructural } from './structural-directives/hero-switch-strdir/hero-switch-strdir.component';
 
 @NgModule({
     declarations: [
@@ -261,7 +267,14 @@ import { HighlightDirectiveAttr } from './attribute-directives/highlight.directi
         AttributeDirectivesComponent,
         AvoidComponent,
         Highlight0Directive,
-        HighlightDirectiveAttr
+        HighlightDirectiveAttr,
+        StructuralDirectivesComponent,
+        HeroCompStrdirComponent,
+        IfLoadedDirective,
+        LoadingStateDirective,
+        TrigonometryDirective,
+        heroSwitchComponentsStructural,
+
     ],
     imports: [
         BrowserModule,
