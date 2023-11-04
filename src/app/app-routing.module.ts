@@ -25,6 +25,7 @@ import { TemplateVariablesComponent } from './template-variables/template-variab
 import { BuiltInDirectivesComponent } from './built-in-directives/built-in-directives.component';
 import { AttributeDirectivesComponent } from './attribute-directives/attribute-directives.component';
 import { StructuralDirectivesComponent } from './structural-directives/structural-directives.component';
+import { DepedencyInjectionComponent } from './depedency-injection/depedency-injection.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponentComponent },
@@ -119,6 +120,10 @@ const appRoutes: Routes = [
     {
         path: 'structuraldirectives',
         component: StructuralDirectivesComponent,
+    },
+    {
+        path: 'depedencyinjection',
+        component: DepedencyInjectionComponent,
     }
 ];
 

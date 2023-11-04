@@ -142,6 +142,17 @@ import { IfLoadedDirective } from './structural-directives/if-loaded.directive';
 import { LoadingStateDirective } from './structural-directives/loading-state.directive';
 import { TrigonometryDirective } from './structural-directives/trigonometry.directive';
 import { heroSwitchComponentsStructural } from './structural-directives/hero-switch-strdir/hero-switch-strdir.component';
+import { DepedencyInjectionComponent } from './depedency-injection/depedency-injection.component';
+import { APP_CONFIG, HERO_DI_CONFIG } from './depedency-injection/app.config';
+import { CarComponent } from './depedency-injection/car/car.component';
+import { InjectorComponent } from './depedency-injection/injector.component';
+import { TestComponentDep } from './depedency-injection/test.component';
+import { HeroListDepComponent } from './depedency-injection/heroes/hero-list-dep.component';
+import { HeroesComponentDep } from './depedency-injection/heroes/heroes.component';
+import { HeroesTspComponent } from './depedency-injection/heroes-tsp';
+import { ProvidersModule } from './depedency-injection/providers.module';
+
+
 
 @NgModule({
     declarations: [
@@ -274,6 +285,13 @@ import { heroSwitchComponentsStructural } from './structural-directives/hero-swi
         LoadingStateDirective,
         TrigonometryDirective,
         heroSwitchComponentsStructural,
+        DepedencyInjectionComponent,
+        CarComponent,
+        InjectorComponent,
+        TestComponentDep,
+        HeroListDepComponent,
+        HeroesComponentDep,
+        HeroesTspComponent,
 
     ],
     imports: [
@@ -282,8 +300,9 @@ import { heroSwitchComponentsStructural } from './structural-directives/hero-swi
         FormsModule,
         HttpClientModule,
         BrowserAnimationsModule,
+        ProvidersModule
     ],
-    providers: [CounterService],
+    providers: [CounterService, { provide: APP_CONFIG, useValue: HERO_DI_CONFIG }],
     bootstrap: [AppComponent],
 })
 export class AppModule { }
