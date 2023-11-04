@@ -154,7 +154,10 @@ import { ProvidersModule } from './depedency-injection/providers.module';
 
 
 
+
+
 @NgModule({
+    exports: [SubjectComponent],
     declarations: [
         HeroDetailComponent,
         BigHeroDetailComponent,
@@ -292,7 +295,6 @@ import { ProvidersModule } from './depedency-injection/providers.module';
         HeroListDepComponent,
         HeroesComponentDep,
         HeroesTspComponent,
-
     ],
     imports: [
         BrowserModule,

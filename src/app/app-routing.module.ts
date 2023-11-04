@@ -26,6 +26,7 @@ import { BuiltInDirectivesComponent } from './built-in-directives/built-in-direc
 import { AttributeDirectivesComponent } from './attribute-directives/attribute-directives.component';
 import { StructuralDirectivesComponent } from './structural-directives/structural-directives.component';
 import { DepedencyInjectionComponent } from './depedency-injection/depedency-injection.component';
+import { StandaloneComponentComponent } from './standalone-components/standalone-component/standalone-component.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponentComponent },
@@ -124,6 +125,10 @@ const appRoutes: Routes = [
     {
         path: 'depedencyinjection',
         component: DepedencyInjectionComponent,
+    },
+    {
+        path: 'standalone',
+        component: StandaloneComponentComponent,
     }
 ];
 
