@@ -11,15 +11,15 @@ import { SelectivePreloadingStrategyService } from '../../selective-preloading-s
     styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent {
-    sessionId!: Observable<string>;
-    token!: Observable<string>;
-    modules: string[] = [];
+    // sessionId!: Observable<string>;
+    // token!: Observable<string>;
+    // modules: string[] = [];
 
     constructor(
-        private route: ActivatedRoute,
-        preloadStrategy: SelectivePreloadingStrategyService
+        // private route: ActivatedRoute,
+        // preloadStrategy: SelectivePreloadingStrategyService
     ) {
-        this.modules = preloadStrategy.preloadedModules;
+        // this.modules = preloadStrategy.preloadedModules;
     }
 
     // ngOnInit() {
