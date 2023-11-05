@@ -1,0 +1,10 @@
+<div class="container" style="background-color: lightgreen">
+  <h2>Source code version</h2>
+  <button type="button" (click)="newMinor()" class="btn btn-primary m-3">
+    New minor version
+  </button>
+  <button type="button" (click)="newMajor()" class="btn btn-primary m-3">
+    New major version
+  </button>
+  <app-version-child [major]="major" [minor]="minor"></app-version-child>
+</div>

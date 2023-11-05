@@ -1,0 +1,12 @@
+<div class="container" style="background-color: lightgreen">
+  <h2>{{ title }}</h2>
+  <label for="power-input">Power: </label>
+  <input type="text" id="power-input" [(ngModel)]="power" />
+  <label for="hero-name">Hero.name: </label>
+  <input type="text" id="hero-name" [(ngModel)]="hero.name" />
+  <button class="mx-3 btn btn-primary" type="button" (click)="reset()">
+    Reset Log
+  </button>
+
+  <app-do-check [hero]="hero" [power]="power"></app-do-check>
+</div>

@@ -1,0 +1,17 @@
+<h4>{{ name }}</h4>
+<button
+  class="btn btn-primary mx-3"
+  type="button"
+  (click)="vote(true)"
+  [disabled]="didVote"
+>
+  Agree
+</button>
+<button
+  class="btn btn-primary mx-3"
+  type="button"
+  (click)="vote(false)"
+  [disabled]="didVote"
+>
+  Disagree
+</button>

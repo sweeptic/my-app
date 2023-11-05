@@ -1,0 +1,2 @@
+<button (click)="onLoadHero()">Load Hero</button>
+<p *appIfLoaded="heroLoadingState">{{ heroLoadingState.data | json }}</p>
