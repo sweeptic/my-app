@@ -1,5 +1,5 @@
 import { BehaviorSubject } from 'rxjs';
-// import { map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { Injectable } from '@angular/core';
 // import { MessageService } from '../message.service';
@@ -17,11 +17,11 @@ export class CrisisService {
 
     getCrises() { return this.crises$; }
 
-    // getCrisis(id: number | string) {
-    //         return this.getCrises().pipe(
-    //             map(crises => crises.find(crisis => crisis.id === +id)!)
-    //         );
-    // }
+    getCrisis(id: number | string) {
+        return this.getCrises().pipe(
+            map(crises => crises.find(crisis => crisis.id === +id)!)
+        );
+    }
 
     //     addCrisis(name: string) {
     //         name = name.trim();
