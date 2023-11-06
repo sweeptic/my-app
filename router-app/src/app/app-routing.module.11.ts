@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { provideRouter, Routes, withComponentInputBinding } from '@angular/router';
 
 import { authGuard } from './auth/auth.guard';
-// import { ComposeMessageComponent } from './compose-message-EXT/compose-message.component';
+// import { ComposeMessageComponent } from './compose-message/compose-message.component';
 // import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
