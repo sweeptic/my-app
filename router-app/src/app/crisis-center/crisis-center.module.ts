@@ -18,7 +18,7 @@ import { CrisisCenterRoutingModule } from './crisis-center-routing.module';
     declarations: [
         CrisisCenterComponent,
         CrisisListComponent,
-        // CrisisCenterHomeComponent,
+        CrisisCenterHomeComponent,
         CrisisDetailComponent
     ]
 })
