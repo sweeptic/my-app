@@ -21,24 +21,25 @@ export class CrisisDetailComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        console.log('this.route', this.route);
-
         this.route.data
             .subscribe(data => {
+                console.log('data', data);
+
                 const crisis: Crisis = data['crisis'];
+                // const crisis = Object.assign({}, data['crisis']);
                 this.editName = crisis.name;
                 this.crisis = crisis;
             });
     }
 
-    //   cancel() {
-    //     this.gotoCrises();
-    //   }
+    cancel() {
+        this.gotoCrises();
+    }
 
-    //   save() {
-    //     this.crisis.name = this.editName;
-    //     this.gotoCrises();
-    //   }
+    save() {
+        this.crisis.name = this.editName;
+        this.gotoCrises();
+    }
 
     //   canDeactivate(): Observable<boolean> | boolean {
     //     // Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged
@@ -50,12 +51,12 @@ export class CrisisDetailComponent implements OnInit {
     //     return this.dialogService.confirm('Discard changes?');
     //   }
 
-    //   gotoCrises() {
-    //     const crisisId = this.crisis ? this.crisis.id : null;
-    //     // Pass along the crisis id if available
-    //     // so that the CrisisListComponent can select that crisis.
-    //     // Add a totally useless `foo` parameter for kicks.
-    //     // Relative navigation back to the crises
-    //     this.router.navigate(['../', { id: crisisId, foo: 'foo' }], { relativeTo: this.route });
-    //   }
+    gotoCrises() {
+        const crisisId = this.crisis ? this.crisis.id : null;
+        // Pass along the crisis id if available
+        // so that the CrisisListComponent can select that crisis.
+        // Add a totally useless `foo` parameter for kicks.
+        // Relative navigation back to the crises
+        this.router.navigate(['../', { id: crisisId, foo: 'foo' }], { relativeTo: this.route });
+    }
 }
