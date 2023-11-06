@@ -19,11 +19,11 @@ const appRoutes: Routes = [
         canMatch: [authGuard]
     },
     // {
-    //     path: 'crisis-center',
-    //     loadChildren: () => import('./crisis-center/crisis-center.module').then(m => m.CrisisCenterModule),
-    //     data: { preload: true }
+    // path: 'crisis-center',
+    // loadChildren: () => import('./crisis-center/crisis-center.module').then(m => m.CrisisCenterModule),
+    // data: { preload: true }
     // },
-    // { path: '', redirectTo: '/superheroes', pathMatch: 'full' },
+    { path: '', redirectTo: '/superheroes', pathMatch: 'full' },
     // { path: '**', component: PageNotFoundComponent }
 ];
 
