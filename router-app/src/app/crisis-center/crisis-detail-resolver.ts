@@ -33,14 +33,21 @@ export const crisisDetailResolver: ResolveFn<Crisis> = (route: ActivatedRouteSna
         }
     }));
 
+    // const interval$ = interval(1000);
+    // const result = interval$.pipe(
+    //     mergeMap(x => x % 2 === 1 ? of('a', 'b', 'c') : EMPTY),
+    // );
+    // result.subscribe(x => console.log(x));
+
     // const res2 = cs.getCrisis(id).pipe(map(crisis => {
     //     console.log('crisis', crisis);
 
     //     if (crisis) {
-    //         return crisis;
+    //         return (crisis);
     //     } else {  // id not found
     //         router.navigate(['/crisis-center']);
     //         return EMPTY;
+
     //     }
     // }));
 
