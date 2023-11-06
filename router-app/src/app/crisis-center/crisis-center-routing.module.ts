@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { CrisisCenterHomeComponent } from './crisis-center-home/crisis-center-home.component';
-// import { CrisisListComponent } from './crisis-list/crisis-list.component';
+import { CrisisListComponent } from './crisis-list/crisis-list.component';
 import { CrisisCenterComponent } from './crisis-center/crisis-center.component';
 // import { CrisisDetailComponent } from './crisis-detail/crisis-detail.component';
 
@@ -16,7 +16,7 @@ const crisisCenterRoutes: Routes = [
         children: [
             {
                 path: '',
-                // component: CrisisListComponent,
+                component: CrisisListComponent,
                 children: [
                     //   {
                     //     path: ':id',
