@@ -157,17 +157,16 @@ import { ProfileEditorComponent } from './reactive-forms/profile-editor/profile-
 import { FormValidationComponent } from './form-validation/form-validation.component';
 import { ReactiveComponent } from './form-validation/reactive/reactive.component';
 import { TemplateComponent } from './form-validation/template/template.component';
-import { AlterEgoDirective } from './form-validation/shared/alter-ego.directive';
-import { ForbiddenNameDirective } from './form-validation/shared/forbidden-name.directive';
-import { IdentityRevealedDirective } from './form-validation/shared/identity-revealed.directive';
-
-
+import { ForbiddenValidatorDirective } from './form-validation/shared/forbidden-name.directive';
+import { UniqueAlterEgoValidatorDirective } from './form-validation/shared/alter-ego.directive';
+import { IdentityRevealedValidatorDirective } from './form-validation/shared/identity-revealed.directive';
 
 
 
 @NgModule({
     exports: [SubjectComponent],
     declarations: [
+        IdentityRevealedValidatorDirective,
         HeroDetailComponent,
         BigHeroDetailComponent,
         AppComponent,
@@ -310,9 +309,8 @@ import { IdentityRevealedDirective } from './form-validation/shared/identity-rev
         FormValidationComponent,
         ReactiveComponent,
         TemplateComponent,
-        AlterEgoDirective,
-        ForbiddenNameDirective,
-        IdentityRevealedDirective,
+        ForbiddenValidatorDirective,
+        UniqueAlterEgoValidatorDirective
     ],
     imports: [
         BrowserModule,

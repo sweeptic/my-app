@@ -1,10 +1,37 @@
-import { Directive } from '@angular/core';
+// import { Directive } from '@angular/core';
+
+// @Directive({
+//   selector: '[appForbiddenName]'
+// })
+// export class ForbiddenNameDirective {
+
+//   constructor() { }
+
+// }
+
+
+import { Directive, Input } from '@angular/core';
+import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } from '@angular/forms';
+
+/** A hero's name can't match the given regular expression */
+export function forbiddenNameValidator(nameRe: RegExp) {
+    // export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
+    // return (control: AbstractControl): ValidationErrors | null => {
+    //     const forbidden = nameRe.test(control.value);
+    //     return forbidden ? { forbiddenName: { value: control.value } } : null;
+    // };
+}
 
 @Directive({
-  selector: '[appForbiddenName]'
+    selector: '[appForbiddenName]',
+    providers: [{ provide: NG_VALIDATORS, useExisting: ForbiddenValidatorDirective, multi: true }]
 })
-export class ForbiddenNameDirective {
+// export class ForbiddenValidatorDirective implements Validator {
+export class ForbiddenValidatorDirective {
+    // @Input('appForbiddenName') forbiddenName = '';
 
-  constructor() { }
-
+    // validate(control: AbstractControl): ValidationErrors | null {
+    //     return this.forbiddenName ? forbiddenNameValidator(new RegExp(this.forbiddenName, 'i'))(control)
+    //         : null;
+    // }
 }
