@@ -10,9 +10,9 @@ const ALTER_EGOS = ['Eric'];
     providedIn: 'root'
 })
 export class HeroesService {
-    // isAlterEgoTaken(alterEgo: string): Observable<boolean> {
-    //     const isTaken = ALTER_EGOS.includes(alterEgo);
+    isAlterEgoTaken(alterEgo: string): Observable<boolean> {
+        const isTaken = ALTER_EGOS.includes(alterEgo);
 
-    //     return of(isTaken).pipe(delay(400));
-    // }
+        return of(isTaken).pipe(delay(400));
+    }
 }

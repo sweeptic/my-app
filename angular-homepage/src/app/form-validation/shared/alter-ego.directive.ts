@@ -10,18 +10,18 @@ import { HeroesService } from './heroes.service';
 import { Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-// export class UniqueAlterEgoValidator implements AsyncValidator {
-export class UniqueAlterEgoValidator {
-    // constructor(private heroesService: HeroesService) { }
+export class UniqueAlterEgoValidator implements AsyncValidator {
 
-    // validate(
-    //     control: AbstractControl
-    // ): Observable<ValidationErrors | null> {
-    //     return this.heroesService.isAlterEgoTaken(control.value).pipe(
-    //         map(isTaken => (isTaken ? { uniqueAlterEgo: true } : null)),
-    //         catchError(() => of(null))
-    //     );
-    // }
+    constructor(private heroesService: HeroesService) { }
+
+    validate(
+        control: AbstractControl
+    ): Observable<ValidationErrors | null> {
+        return this.heroesService.isAlterEgoTaken(control.value).pipe(
+            map(isTaken => (isTaken ? { uniqueAlterEgo: true } : null)),
+            catchError(() => of(null))
+        );
+    }
 }
 
 @Directive({
@@ -34,20 +34,12 @@ export class UniqueAlterEgoValidator {
         }
     ]
 })
-// export class UniqueAlterEgoValidatorDirective implements AsyncValidator {
-export class UniqueAlterEgoValidatorDirective {
-    // constructor(private validator: UniqueAlterEgoValidator) { }
+export class UniqueAlterEgoValidatorDirective implements AsyncValidator {
+    constructor(private validator: UniqueAlterEgoValidator) { }
 
-    // validate(
-    //     control: AbstractControl
-    // ): Observable<ValidationErrors | null> {
-    //     return this.validator.validate(control);
-    // }
+    validate(
+        control: AbstractControl
+    ): Observable<ValidationErrors | null> {
+        return this.validator.validate(control);
+    }
 }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/
