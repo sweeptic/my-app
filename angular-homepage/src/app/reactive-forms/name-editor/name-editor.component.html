@@ -1,0 +1,10 @@
+<div class='container p-3' style='background-color: lightseagreen'>
+
+
+    <label for="name">Name: </label>
+    <input id="name" type="text" [formControl]="name">
+
+    <p>Value: {{ name.value }}</p>
+
+    <button type="button" (click)="updateName()">Update Name</button>
+</div>

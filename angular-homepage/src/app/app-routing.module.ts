@@ -27,6 +27,7 @@ import { AttributeDirectivesComponent } from './attribute-directives/attribute-d
 import { StructuralDirectivesComponent } from './structural-directives/structural-directives.component';
 import { DepedencyInjectionComponent } from './depedency-injection/depedency-injection.component';
 import { StandaloneComponentComponent } from './standalone-components/standalone-component/standalone-component.component';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponentComponent },
@@ -129,6 +130,10 @@ const appRoutes: Routes = [
     {
         path: 'standalone',
         component: StandaloneComponentComponent,
+    },
+    {
+        path: 'reactiveforms',
+        component: ReactiveFormsComponent,
     }
 ];
 

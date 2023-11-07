@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServerComponent } from './basic-components/server.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HighlightDirective } from './basic-components/highlight.directive';
 import { HighlightDirectiveHostBinding } from './basic-components/highlightHostbinding.directive';
 import { HttpClientModule } from '@angular/common/http';
@@ -151,6 +151,9 @@ import { HeroListDepComponent } from './depedency-injection/heroes/hero-list-dep
 import { HeroesComponentDep } from './depedency-injection/heroes/heroes.component';
 import { HeroesTspComponent } from './depedency-injection/heroes-tsp';
 import { ProvidersModule } from './depedency-injection/providers.module';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { NameEditorComponent } from './reactive-forms/name-editor/name-editor.component';
+import { ProfileEditorComponent } from './reactive-forms/profile-editor/profile-editor.component';
 
 
 
@@ -295,6 +298,9 @@ import { ProvidersModule } from './depedency-injection/providers.module';
         HeroListDepComponent,
         HeroesComponentDep,
         HeroesTspComponent,
+        ReactiveFormsComponent,
+        NameEditorComponent,
+        ProfileEditorComponent,
     ],
     imports: [
         BrowserModule,
@@ -302,7 +308,8 @@ import { ProvidersModule } from './depedency-injection/providers.module';
         FormsModule,
         HttpClientModule,
         BrowserAnimationsModule,
-        ProvidersModule
+        ProvidersModule,
+        ReactiveFormsModule
     ],
     providers: [CounterService, { provide: APP_CONFIG, useValue: HERO_DI_CONFIG }],
     bootstrap: [AppComponent],
