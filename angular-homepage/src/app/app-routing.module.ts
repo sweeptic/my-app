@@ -28,6 +28,7 @@ import { StructuralDirectivesComponent } from './structural-directives/structura
 import { DepedencyInjectionComponent } from './depedency-injection/depedency-injection.component';
 import { StandaloneComponentComponent } from './standalone-components/standalone-component/standalone-component.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { FormValidationComponent } from './form-validation/form-validation.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponentComponent },
@@ -134,6 +135,10 @@ const appRoutes: Routes = [
     {
         path: 'reactiveforms',
         component: ReactiveFormsComponent,
+    },
+    {
+        path: 'formvalidation',
+        component: FormValidationComponent,
     }
 ];
 

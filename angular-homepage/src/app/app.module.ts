@@ -154,6 +154,12 @@ import { ProvidersModule } from './depedency-injection/providers.module';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { NameEditorComponent } from './reactive-forms/name-editor/name-editor.component';
 import { ProfileEditorComponent } from './reactive-forms/profile-editor/profile-editor.component';
+import { FormValidationComponent } from './form-validation/form-validation.component';
+import { ReactiveComponent } from './form-validation/reactive/reactive.component';
+import { TemplateComponent } from './form-validation/template/template.component';
+import { AlterEgoDirective } from './form-validation/shared/alter-ego.directive';
+import { ForbiddenNameDirective } from './form-validation/shared/forbidden-name.directive';
+import { IdentityRevealedDirective } from './form-validation/shared/identity-revealed.directive';
 
 
 
@@ -301,6 +307,12 @@ import { ProfileEditorComponent } from './reactive-forms/profile-editor/profile-
         ReactiveFormsComponent,
         NameEditorComponent,
         ProfileEditorComponent,
+        FormValidationComponent,
+        ReactiveComponent,
+        TemplateComponent,
+        AlterEgoDirective,
+        ForbiddenNameDirective,
+        IdentityRevealedDirective,
     ],
     imports: [
         BrowserModule,
