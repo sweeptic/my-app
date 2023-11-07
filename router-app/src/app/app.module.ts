@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { ComposeMessageComponent } from './compose-message/compose-message.component';
 
 import { AppRoutingModule } from './app-routing.module';
-// import { HeroesModule } from './heroes/heroes.module';
+import { HeroesModule } from './heroes/heroes.module';
 import { AuthModule } from './auth/auth.module';
 
 @NgModule({
@@ -18,7 +18,7 @@ import { AuthModule } from './auth/auth.module';
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
-        // HeroesModule,
+        HeroesModule,
         AuthModule,
         AppRoutingModule,
     ],
