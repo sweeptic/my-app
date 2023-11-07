@@ -1,5 +1,5 @@
 // TODO: Feature Componetized like CrisisCenter
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -13,20 +13,24 @@ import { Hero } from '../hero';
     styleUrls: ['./hero-list.component.css']
 })
 export class HeroListComponent implements OnInit {
-    //   heroes$!: Observable<Hero[]>;
-    //   selectedId = 0;
+    heroes$!: Observable<Hero[]>;
+    selectedId = 0;
 
     constructor(
-        // private service: HeroService,
-        // private route: ActivatedRoute
+        private service: HeroService,
+        private route: ActivatedRoute
     ) { }
 
     ngOnInit() {
-        // this.heroes$ = this.route.paramMap.pipe(
-        //   switchMap(params => {
-        //     this.selectedId = parseInt(params.get('id')!, 10);
-        //     return this.service.getHeroes();
-        //   })
-        // );
+        console.log('route', this.route.paramMap);
+
+        this.heroes$ = this.route.paramMap.pipe(
+            switchMap(params => {
+                const selI = parseInt(params.get('id')!, 10);
+                // console.log('selI', selI, params.get('id'));
+                this.selectedId = selI;
+                return this.service.getHeroes();
+            })
+        );
     }
 }
