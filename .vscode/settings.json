@@ -1,11 +1,33 @@
 {
     "cSpell.words": [
+        "Angularelements",
+        "attributebinding",
+        "attributedirectives",
         "Bombasto",
+        "builtindirectives",
         "Celeritas",
+        "componentcommunication",
+        "componentstyle",
+        "contentprojection",
+        "Depedency",
+        "depedencyinjection",
         "Dynama",
+        "dynamiccomponent",
         "empt",
+        "eventbinding",
+        "formvalidation",
         "Magneta",
         "observ",
-        "switchmap"
+        "propertybinding",
+        "reactiveforms",
+        "Sharingdata",
+        "structuraldirectives",
+        "switchmap",
+        "templatesyntax",
+        "templatevariables",
+        "Twoway",
+        "twowaybinding",
+        "Viewencapsulation",
+        "wned"
     ]
 }

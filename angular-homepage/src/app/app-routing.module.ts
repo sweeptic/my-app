@@ -29,6 +29,7 @@ import { DepedencyInjectionComponent } from './depedency-injection/depedency-inj
 import { StandaloneComponentComponent } from './standalone-components/standalone-component/standalone-component.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { FormValidationComponent } from './form-validation/form-validation.component';
+import { SecurityComponent } from './best-practices/security/security.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponentComponent },
@@ -139,6 +140,10 @@ const appRoutes: Routes = [
     {
         path: 'formvalidation',
         component: FormValidationComponent,
+    },
+    {
+        path: 'security',
+        component: SecurityComponent,
     }
 ];
 

@@ -160,6 +160,9 @@ import { TemplateComponent } from './form-validation/template/template.component
 import { ForbiddenValidatorDirective } from './form-validation/shared/forbidden-name.directive';
 import { UniqueAlterEgoValidatorDirective } from './form-validation/shared/alter-ego.directive';
 import { IdentityRevealedValidatorDirective } from './form-validation/shared/identity-revealed.directive';
+import { SecurityComponent } from './best-practices/security/security.component';
+import { BypassSecurityComponent } from './best-practices/security/bypass-security/bypass-security.component';
+import { InnerHtmlBindingComponent } from './best-practices/security/inner-html-binding/inner-html-binding.component';
 
 
 
@@ -310,7 +313,10 @@ import { IdentityRevealedValidatorDirective } from './form-validation/shared/ide
         ReactiveComponent,
         TemplateComponent,
         ForbiddenValidatorDirective,
-        UniqueAlterEgoValidatorDirective
+        UniqueAlterEgoValidatorDirective,
+        SecurityComponent,
+        BypassSecurityComponent,
+        InnerHtmlBindingComponent
     ],
     imports: [
         BrowserModule,
