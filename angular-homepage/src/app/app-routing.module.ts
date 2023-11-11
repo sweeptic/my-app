@@ -154,12 +154,20 @@ const appRoutes: Routes = [
     },
     {
         path: 'binding',
-        component: BestPropertyBindingComponent,
+        component: PropertyBindingComponent,
     },
     {
         path: 'lazyloading',
         component: LazyLoadingComponent,
-    }
+    },
+    // {
+    //     path: 'customers',
+    //     loadChildren: () => import('./best-practises/lazy-loading/customers/customers.module').then(m => m.CustomersModule)
+    // },
+    // {
+    //     path: 'orders',
+    //     loadChildren: () => import('./best-practises/lazy-loading/orders/orders.module').then(m => m.OrdersModule)
+    // },
 
 
 ];

@@ -167,6 +167,8 @@ import { LazyLoadingComponent } from './best-practices/lazy-loading/lazy-loading
 import { AccessibilityComponent } from './best-practices/accessibility/accessibility.component';
 import { BestPropertyBindingComponent } from './best-practices/property-binding/property-binding.component';
 import { ExampleProgressbarComponent } from './best-practices/example-progressbar/example-progressbar.component';
+// import { OrdersComponent } from './best-practices/lazy-loading/orders/orders.component';
+// import { CustomersComponent } from './best-practices/lazy-loading/customers/customers.component';
 
 
 
@@ -324,7 +326,9 @@ import { ExampleProgressbarComponent } from './best-practices/example-progressba
         LazyLoadingComponent,
         AccessibilityComponent,
         BestPropertyBindingComponent,
-        ExampleProgressbarComponent
+        ExampleProgressbarComponent,
+        // OrdersComponent,
+        // CustomersComponent
     ],
     imports: [
         BrowserModule,
