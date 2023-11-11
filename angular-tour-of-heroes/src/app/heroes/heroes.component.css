@@ -1,0 +1,46 @@
+.li_container {
+    list-style: none;
+    margin-bottom: 1rem;
+    width: 300px;
+    background-color: lightgrey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    border-radius: 0 4px 4px 0;
+}
+
+.span_container {
+    display: flex;
+    height: 100%;
+    cursor: pointer;
+    width: 85%;
+}
+
+
+.hero_id {
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    border-radius: 4px 0 0 4px;
+    padding-left: 13px;
+    padding-right: 13px;
+}
+
+.hero_name {
+    display: flex;
+    align-items: center;
+    margin-left: 13px;
+}
+
+.hero_close {
+    width: 15%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.hero_button {
+    border-radius: 5px;
+    border-style: none;
+    padding: 12px 15px 12px 15px
+}
