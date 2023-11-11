@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "aboo",
         "Angularelements",
         "attributebinding",
         "attributedirectives",
@@ -16,18 +17,29 @@
         "empt",
         "eventbinding",
         "formvalidation",
+        "Herobirthday",
+        "Hostbinding",
+        "lazyloading",
         "Magneta",
+        "Missioncontrol",
+        "multislot",
+        "ngprojectas",
         "observ",
+        "onchanges",
+        "progressbar",
         "propertybinding",
         "reactiveforms",
         "Sharingdata",
+        "strdir",
         "structuraldirectives",
         "switchmap",
         "templatesyntax",
         "templatevariables",
         "Twoway",
         "twowaybinding",
+        "valuenow",
         "Viewencapsulation",
+        "votetaker",
         "wned"
     ]
 }

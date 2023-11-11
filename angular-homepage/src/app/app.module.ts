@@ -163,6 +163,10 @@ import { IdentityRevealedValidatorDirective } from './form-validation/shared/ide
 import { SecurityComponent } from './best-practices/security/security.component';
 import { BypassSecurityComponent } from './best-practices/security/bypass-security/bypass-security.component';
 import { InnerHtmlBindingComponent } from './best-practices/security/inner-html-binding/inner-html-binding.component';
+import { LazyLoadingComponent } from './best-practices/lazy-loading/lazy-loading.component';
+import { AccessibilityComponent } from './best-practices/accessibility/accessibility.component';
+import { BestPropertyBindingComponent } from './best-practices/property-binding/property-binding.component';
+import { ExampleProgressbarComponent } from './best-practices/example-progressbar/example-progressbar.component';
 
 
 
@@ -316,7 +320,11 @@ import { InnerHtmlBindingComponent } from './best-practices/security/inner-html-
         UniqueAlterEgoValidatorDirective,
         SecurityComponent,
         BypassSecurityComponent,
-        InnerHtmlBindingComponent
+        InnerHtmlBindingComponent,
+        LazyLoadingComponent,
+        AccessibilityComponent,
+        BestPropertyBindingComponent,
+        ExampleProgressbarComponent
     ],
     imports: [
         BrowserModule,

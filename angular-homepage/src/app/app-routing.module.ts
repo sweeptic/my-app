@@ -30,6 +30,9 @@ import { StandaloneComponentComponent } from './standalone-components/standalone
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { FormValidationComponent } from './form-validation/form-validation.component';
 import { SecurityComponent } from './best-practices/security/security.component';
+import { AccessibilityComponent } from './best-practices/accessibility/accessibility.component';
+import { LazyLoadingComponent } from './best-practices/lazy-loading/lazy-loading.component';
+import { BestPropertyBindingComponent } from './best-practices/property-binding/property-binding.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponentComponent },
@@ -144,7 +147,21 @@ const appRoutes: Routes = [
     {
         path: 'security',
         component: SecurityComponent,
+    },
+    {
+        path: 'accessibility',
+        component: AccessibilityComponent,
+    },
+    {
+        path: 'binding',
+        component: BestPropertyBindingComponent,
+    },
+    {
+        path: 'lazyloading',
+        component: LazyLoadingComponent,
     }
+
+
 ];
 
 @NgModule({
