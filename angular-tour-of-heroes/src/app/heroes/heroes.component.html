@@ -1,5 +1,12 @@
 <div class='container p-3' style='background-color: lightgreen;'>
 
+    <div class='container p-3' style='background-color: lightcoral;'>
+        <label for="nameEditor">Hero name:</label>
+        <!-- <input type="text" [value]="name" (input)="updateName($event)"> -->
+        <input type="text" #nameInput>
+    </div>
+    <span>input value: {{nameInput.value}}</span>
+    <button (click)="addHero(nameInput.value); nameInput.value=''">add hero</button>
 
     <ul>
         <li class="li_container" *ngFor="let hero of heroes">

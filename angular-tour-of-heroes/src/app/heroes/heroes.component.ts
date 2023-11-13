@@ -10,7 +10,6 @@ import { Hero } from '../services/in-memory-data.service';
 export class HeroesComponent implements OnInit {
 
     heroes: Hero[] = [];
-
     constructor(private heroService: HeroService) {
 
     }
@@ -22,6 +21,15 @@ export class HeroesComponent implements OnInit {
     getHeroes(): void {
         this.heroService.getHeroes().subscribe((heroes) => this.heroes = heroes);
     }
+
+
+    addHero(name: string): void {
+        if (!name) return;
+        this.heroService.addHero({ name } as Hero).subscribe((hero: Hero) => {
+            this.heroes.push(hero);
+        });
+    }
+
 
 
 }
