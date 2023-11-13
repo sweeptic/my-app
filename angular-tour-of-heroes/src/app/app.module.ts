@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { MessagesComponent } from './messages/messages.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
         DashboardComponent,
         HeroDetailComponent,
         HeroSearchComponent,
+        MessagesComponent,
     ],
     imports: [
         BrowserModule,

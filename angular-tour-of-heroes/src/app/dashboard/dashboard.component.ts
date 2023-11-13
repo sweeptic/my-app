@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Hero } from '../services/in-memory-data.service';
 import { HeroService } from '../services/hero.service';
+import { MessageService } from '../services/message.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -10,7 +11,9 @@ import { HeroService } from '../services/hero.service';
 export class DashboardComponent {
     heroes: Hero[] | undefined;
 
-    constructor(private heroService: HeroService) { }
+    constructor(
+        private heroService: HeroService
+    ) { }
 
     ngOnInit() {
         this.getHeroes();
@@ -18,7 +21,6 @@ export class DashboardComponent {
 
     getHeroes() {
         this.heroService.getHeroes().subscribe((data) => {
-            console.log('data', data);
             this.heroes = data.slice(0, 4);
         });
     }
