@@ -1,7 +1,9 @@
-<div *ngIf="messages">
+<div *ngIf="messageService.messages">
+    <button (click)="messageService.resetMessages()">Reset log</button>
     <ul>
-        <li *ngFor="let message of messages">
+        <li *ngFor="let message of messageService.messages">
             {{message}}
         </li>
     </ul>
+
 </div>

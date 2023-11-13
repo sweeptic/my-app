@@ -7,11 +7,8 @@ import { MessageService } from '../services/message.service';
     styleUrls: ['./messages.component.css']
 })
 export class MessagesComponent {
-    messages: string[] | undefined;
 
     constructor(public messageService: MessageService) {
-
-        this.messages = messageService.getMessages();
     }
 
 
