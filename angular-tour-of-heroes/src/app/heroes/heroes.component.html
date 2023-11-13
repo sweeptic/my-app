@@ -10,7 +10,7 @@
 
     <ul>
         <li class="li_container" *ngFor="let hero of heroes">
-            <a class="span_container">
+            <a class="span_container" routerLink="/detail/{{hero.id}} ">
                 <span class="hero_id">{{hero.id}}</span>
                 <span class="hero_name">{{hero.name}}</span>
             </a>

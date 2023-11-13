@@ -26,6 +26,13 @@ export class HeroService {
         );
     }
 
+    getHero(id: number) {
+        const url = `${this.heroesUrl}/${id}`;
+        return this.http.get<Hero>(url).pipe(
+            tap((hero) => console.log(`hero founded=${hero}`)
+            ));
+    }
+
     addHero(hero: Hero): Observable<Hero> {
         return this.http.post<Hero>(this.heroesUrl, hero, this.httpOptions)
             .pipe(
