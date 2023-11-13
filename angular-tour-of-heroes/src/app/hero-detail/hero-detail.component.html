@@ -6,9 +6,10 @@
         <span>id: {{hero.id}}</span>
         <br>
         <label for="">hero name: <input type="text" [value]="hero.name" (input)="hero.name=getValue($event)"></label>
-
+        <br>
         <button (click)="saveHero()">Save</button>
-
+        <br>
+        <button (click)="goBack()">go back</button>
     </div>
 
 

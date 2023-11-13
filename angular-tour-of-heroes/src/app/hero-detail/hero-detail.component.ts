@@ -34,6 +34,7 @@ export class HeroDetailComponent {
         this.location.back();
     }
 
+
     saveHero() {
         if (this.hero) {
             this.heroService.updateHero(this.hero).subscribe(_ => this.goBack()
