@@ -1,7 +1,16 @@
 <div class='container p-3' style='background-color: lightgreen;'>
 
-    <span>{{hero?.name | uppercase}} Details</span>
-    <br>
-    <span>id: {{hero?.id}}</span>
+    <div *ngIf="hero">
+        <span>{{hero.name | uppercase}} Details</span>
+        <br>
+        <span>id: {{hero.id}}</span>
+        <br>
+        <label for="">hero name: <input type="text" [value]="hero.name" (input)="hero.name=getValue($event)"></label>
+
+        <button (click)="saveHero()">Save</button>
+
+    </div>
+
+
 
 </div>

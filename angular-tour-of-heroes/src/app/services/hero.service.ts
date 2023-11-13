@@ -42,6 +42,16 @@ export class HeroService {
             );
     }
 
+
+    updateHero(hero: Hero) {
+        return this.http.put(this.heroesUrl, hero, this.httpOptions)
+            .pipe(
+                tap(_ => console.log('update hero')
+                ));
+
+
+    }
+
     removeHero(id: number) {
         const url = `${this.heroesUrl}/${id}`;
         return this.http.delete<Hero>(url, this.httpOptions).pipe(
