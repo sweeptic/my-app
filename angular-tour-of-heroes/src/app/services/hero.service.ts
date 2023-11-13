@@ -35,4 +35,12 @@ export class HeroService {
             );
     }
 
+    removeHero(id: number) {
+        const url = `${this.heroesUrl}/${id}`;
+        return this.http.delete<Hero>(url, this.httpOptions).pipe(
+            tap(_ => {
+                console.log(`deleted hero id=${id}`);
+            }));
+    }
+
 }

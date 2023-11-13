@@ -30,6 +30,15 @@ export class HeroesComponent implements OnInit {
         });
     }
 
+    deleteHero(hero: Hero) {
+        this.heroService.removeHero(hero.id).subscribe(_ => {
+            const newHeroList = this.heroes.filter((item) => item.name !== hero.name);
+            this.heroes = newHeroList;
+        });
+
+
+    }
+
 
 
 }
