@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 
-import { Observable, tap } from 'rxjs';
+import { EMPTY, Observable, of, tap } from 'rxjs';
 import { Hero } from './in-memory-data.service';
 
 @Injectable({
@@ -48,6 +48,17 @@ export class HeroService {
             .pipe(
                 tap(_ => console.log('update hero')
                 ));
+
+
+    }
+
+    searchHeroes(term: string) {
+        console.log('call search ', term);
+
+        if (!term.trim()) {
+            return of([]);
+        }
+        return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`);
 
 
     }
